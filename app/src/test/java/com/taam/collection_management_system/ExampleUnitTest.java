@@ -1,4 +1,4 @@
-package com.example.b07demosummer2024;
+package com.taam.collection_management_system;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.example.b07demosummer2024;
+package com.taam.collection_management_system;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,26 +10,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-public class ManageItemsFragment extends Fragment {
+public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_manage_items, container, false);
+        View view = inflater.inflate(R.layout.activity_home_fragment, container, false);
 
-        Button buttonAddItem = view.findViewById(R.id.buttonAddItem);
-        Button buttonDeleteItem = view.findViewById(R.id.buttonDeleteItem);
-        Button buttonBack = view.findViewById(R.id.buttonBack);
+        Button buttonView = view.findViewById(R.id.buttonRecyclerView);
 
-        buttonAddItem.setOnClickListener(new View.OnClickListener() {
+        buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragment(new AddItemFragment());
+                loadFragment(new HomeFragment());
             }
         });
-
-        buttonDeleteItem.setOnClickListener(v -> loadFragment(new DeleteItemFragment()));
-
-        buttonBack.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
         return view;
     }

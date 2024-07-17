@@ -1,21 +1,40 @@
 {
   "project_info": {
-    "project_number": "103450168850",
-    "project_id": "b07-demo-summer-2024",
-    "storage_bucket": "b07-demo-summer-2024.appspot.com"
+    "project_number": "499504850351",
+    "project_id": "taam-management-system",
+    "storage_bucket": "taam-management-system.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:103450168850:android:18be49669e0000df0552cb",
+        "mobilesdk_app_id": "1:499504850351:android:edde8005e3a84d92757b5a",
         "android_client_info": {
-          "package_name": "com.example.b07demosummer2024"
+          "package_name": "com.example.TAAM"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": ""
+          "current_key": "AIzaSyACMTVEcfgrZ7k5xyOn18VRVoDomfmpCUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499504850351:android:b6417bb123931a78757b5a",
+        "android_client_info": {
+          "package_name": "com.taam.collection_management_system"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACMTVEcfgrZ7k5xyOn18VRVoDomfmpCUo"
         }
       ],
       "services": {
