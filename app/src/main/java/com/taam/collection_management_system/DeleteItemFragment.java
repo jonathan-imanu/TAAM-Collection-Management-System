@@ -43,17 +43,17 @@ public class DeleteItemFragment extends Fragment {
                 R.array.categories_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapter);
-
+/*
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deleteItemByTitle();
             }
         });
-
+*/
         return view;
     }
-
+/*
     private void deleteItemByTitle() {
         String title = editTextTitle.getText().toString().trim();
         String category = spinnerCategory.getSelectedItem().toString().toLowerCase();
@@ -95,4 +95,5 @@ public class DeleteItemFragment extends Fragment {
 
 
     }
+    */
 }

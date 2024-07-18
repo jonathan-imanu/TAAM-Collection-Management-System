@@ -7,48 +7,48 @@
     tools:context=".AddItemFragment">
 
     <EditText
-        android:id="@+id/editTextTitle"
+        android:id="@+id/editTextName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Title"
-        app:layout_constraintTop_toTopOf="parent"
+        android:hint="Name"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextAuthor"
+        android:id="@+id/editTextLot"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Author"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTitle"
+        android:hint="Lot#"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
     <EditText
-        android:id="@+id/editTextGenre"
+        android:id="@+id/editTextCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Genre"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAuthor"
+        android:hint="Category"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextLot" />
 
     <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Description"
-        app:layout_constraintTop_toBottomOf="@+id/editTextGenre"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCategory"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
     <Spinner
         android:id="@+id/spinnerCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDescription"
+        android:entries="@array/categories_array"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescription" />
 
     <Button
         android:id="@+id/buttonAdd"
@@ -58,4 +58,15 @@
         app:layout_constraintTop_toBottomOf="@+id/spinnerCategory"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/editTextPeriod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Period"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="257dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

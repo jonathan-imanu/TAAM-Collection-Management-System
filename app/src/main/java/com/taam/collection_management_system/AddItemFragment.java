@@ -17,7 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AddItemFragment extends Fragment {
-    private EditText editTextTitle, editTextAuthor, editTextGenre, editTextDescription;
+    private EditText editTextName, editTextLot, editTextCategory, editTextPeriod, editTextDescription;
     private Spinner spinnerCategory;
     private Button buttonAdd;
 
@@ -29,21 +29,21 @@ public class AddItemFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_item, container, false);
 
-        editTextTitle = view.findViewById(R.id.editTextTitle);
-        editTextAuthor = view.findViewById(R.id.editTextAuthor);
-        editTextGenre = view.findViewById(R.id.editTextGenre);
+        editTextName= view.findViewById(R.id.editTextName);
+        editTextLot = view.findViewById(R.id.editTextLot);
+        editTextCategory = view.findViewById(R.id.editTextCategory);
+        editTextPeriod = view.findViewById(R.id.editTextPeriod);
         editTextDescription = view.findViewById(R.id.editTextDescription);
         spinnerCategory = view.findViewById(R.id.spinnerCategory);
         buttonAdd = view.findViewById(R.id.buttonAdd);
 
-        db = FirebaseDatabase.getInstance("https://b07-demo-summer-2024-default-rtdb.firebaseio.com/");
+        db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
 
         // Set up the spinner with categories
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.categories_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapter);
-
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,20 +55,25 @@ public class AddItemFragment extends Fragment {
     }
 
     private void addItem() {
-        String title = editTextTitle.getText().toString().trim();
-        String author = editTextAuthor.getText().toString().trim();
-        String genre = editTextGenre.getText().toString().trim();
+        String name = editTextName.getText().toString().trim();
+        String lot = editTextLot.getText().toString().trim();
         String description = editTextDescription.getText().toString().trim();
-        String category = spinnerCategory.getSelectedItem().toString().toLowerCase();
+        String category = editTextCategory.getText().toString().trim();
+        String period = editTextPeriod.getText().toString().trim();
+        //String category = spinnerCategory.getSelectedItem().toString().toLowerCase();
+        //String period = spinnerCategory.getSelectedItem().toString().toLowerCase();
+        //Upload file here, maybe a link?
 
-        if (title.isEmpty() || author.isEmpty() || genre.isEmpty() || description.isEmpty()) {
+        if (name.isEmpty() || lot.isEmpty() || description.isEmpty()) {
             Toast.makeText(getContext(), "Please fill out all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        itemsRef = db.getReference("categories/" + category);
+        DatabaseReference myRef = db.getReference();
+        //myRef.child("collection_data").child("1").child("Category").setValue("a");
+        itemsRef = db.getReference();
         String id = itemsRef.push().getKey();
-        Item item = new Item(id, title, author, genre, description);
+        Item item = new Item(id, lot, name, category, period, description);
 
         itemsRef.child(id).setValue(item).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {

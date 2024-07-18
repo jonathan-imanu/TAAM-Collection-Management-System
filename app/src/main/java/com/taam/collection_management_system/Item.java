@@ -21,6 +21,8 @@ public class Item {
     }
 
     // Getters and setters
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
     public String getLot() { return lot; }
     public void setLot(String lot) { this.lot = lot; }
     public String getName() { return name; }
