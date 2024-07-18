@@ -52,8 +52,9 @@ public class HomeFragment extends Fragment {
         buttonAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AdminPopupActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(), AdminPopupActivity.class);
+//                startActivity(intent);
+                loadFragment(new AdminLoginFragment());
             }
         });
 
