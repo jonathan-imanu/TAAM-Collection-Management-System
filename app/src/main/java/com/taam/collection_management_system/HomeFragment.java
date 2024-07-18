@@ -20,6 +20,7 @@ public class HomeFragment extends Fragment {
         Button buttonScroller = view.findViewById(R.id.buttonScroller);
         Button buttonSpinner = view.findViewById(R.id.buttonSpinner);
         Button buttonManageItems = view.findViewById(R.id.buttonManageItems);
+        Button buttonAdmin = view.findViewById(R.id.buttonAdmin);
 
         buttonRecyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +46,13 @@ public class HomeFragment extends Fragment {
         buttonManageItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { loadFragment(new ManageItemsFragment());}
+        });
+
+        buttonAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadFragment(new AdminFragment());
+            }
         });
 
         return view;
