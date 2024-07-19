@@ -21,8 +21,6 @@
         <activity
             android:name=".HomeFragment"
             android:exported="false" />
-        <activity android:name=".AdminPopupActivity"
-            android:theme="@style/AppTheme.Popup"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
