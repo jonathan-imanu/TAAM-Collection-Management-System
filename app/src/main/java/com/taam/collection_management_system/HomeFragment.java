@@ -1,6 +1,7 @@
 package com.taam.collection_management_system;
 
 import android.os.Bundle;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ public class HomeFragment extends Fragment {
         Button buttonScroller = view.findViewById(R.id.buttonScroller);
         Button buttonSpinner = view.findViewById(R.id.buttonSpinner);
         Button buttonManageItems = view.findViewById(R.id.buttonManageItems);
+        Button buttonAdmin = view.findViewById(R.id.buttonAdmin);
 
         buttonRecyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +47,15 @@ public class HomeFragment extends Fragment {
         buttonManageItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { loadFragment(new ManageItemsFragment());}
+        });
+
+        buttonAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), AdminPopupActivity.class);
+//                startActivity(intent);
+                loadFragment(new AdminLoginFragment());
+            }
         });
 
         return view;
