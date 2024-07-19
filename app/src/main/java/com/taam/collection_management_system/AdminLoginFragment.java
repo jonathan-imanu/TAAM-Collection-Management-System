@@ -91,7 +91,7 @@ public class AdminLoginFragment extends Fragment {
     private void updateUI() {
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, new AddItemFragment());
+        fragmentTransaction.replace(R.id.fragment_container, new AdminPageFragment());
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }

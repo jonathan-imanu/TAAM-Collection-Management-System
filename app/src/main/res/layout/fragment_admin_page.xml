@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainPageFragment">
+
+    <HorizontalScrollView
+        android:id="@+id/table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/purple">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:background="@color/cell"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:id="@+id/textViewLot"
+                    android:layout_width="45sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Lot" />
+
+                <TextView
+                    android:id="@+id/textViewName"
+                    android:layout_width="125sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Name" />
+
+                <TextView
+                    android:id="@+id/viewButton"
+                    android:layout_width="125sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Period" />
+
+                <TextView
+                    android:id="@+id/textViewPeriod"
+                    android:layout_width="125sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Category" />
+
+                <TextView
+                    android:id="@+id/textViewDescription"
+                    android:layout_width="200sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Description" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/buttonBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:elevation="10dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/buttonView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/purple"
+                    android:layout_marginRight="10dp"
+                    android:text="View"/>
+                <Button
+                    android:id="@+id/buttonSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/purple"
+                    android:text="Search"/>
+                <Button
+                android:id="@+id/buttonBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple"
+                android:text="Back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            </LinearLayout>
+
+            <!-- Second row of buttons -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/buttonAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="Add" />
+
+                <Button
+                    android:id="@+id/buttonRemove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/purple"
+                    android:layout_marginRight="10dp"
+                    android:text="Remove" />
+                <Button
+                    android:id="@+id/buttonReport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/purple"
+                    android:layout_marginRight="10dp"
+                    android:text="Report"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
