@@ -29,9 +29,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 
-import java.util.concurrent.Executor;
-
-
 public class AdminLoginFragment extends Fragment {
     private EditText editTextEmail,editTextPassword;
     private Button buttonLogin;
@@ -53,8 +50,8 @@ public class AdminLoginFragment extends Fragment {
         editTextEmail = view.findViewById(R.id.editTextEmail);
         buttonLogin = view.findViewById(R.id.buttonLogin);
         checkboxIsUsername = view.findViewById(R.id.checkboxIsUsername);
-        drawableEmail = ContextCompat.getDrawable(requireContext(), R.drawable.baseline_email_24);
-        drawablePerson = ContextCompat.getDrawable(requireContext(), R.drawable.baseline_person_24);
+        drawableEmail = ContextCompat.getDrawable(requireContext(), R.drawable.admin_login_email_icon);
+        drawablePerson = ContextCompat.getDrawable(requireContext(), R.drawable.admin_login_person_icon);
 
 
         mAuth = FirebaseAuth.getInstance();

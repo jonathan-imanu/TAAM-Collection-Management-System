@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -37,47 +38,51 @@ public class AdminPageFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_admin_page, container, false);
 
-        Button buttonView = view.findViewById(R.id.buttonView);
-        Button buttonSearch = view.findViewById(R.id.buttonSearch);
-        Button buttonBack = view.findViewById(R.id.buttonBack);
-        Button buttonAdd = view.findViewById(R.id.buttonAdd);
-//        Button buttonReport = view.findViewById(R.id.buttonReport);
-        Button buttonRemove;
+        // Three Main Screen Entries
+        ImageButton buttonView = view.findViewById(R.id.buttonView);
+        ImageButton buttonSearch = view.findViewById(R.id.buttonSearch);
+        ImageButton buttonHome = view.findViewById(R.id.buttonHome);
+
+        // Three Admin Functionalities
+        ImageButton buttonDelete = view.findViewById(R.id.buttonDelete);
+        ImageButton buttonAdd = view.findViewById(R.id.buttonAdd);
+        ImageButton buttonReport = view.findViewById(R.id.buttonReport);
+
 
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // add functionality
+                loadFragment(new MainPageFragment());
             }
         });
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // add functionality
-            }
-        });
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Intent intent = new Intent(getActivity(), AdminPopupActivity.class);
-                // startActivity(intent);
                 loadFragment(new MainPageFragment());
             }
         });
-//        buttonReport.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // Intent intent = new Intent(getActivity(), AdminPopupActivity.class);
-//                // startActivity(intent);
-//                loadFragment(new MainPageFragment());
-//            }
-//        });
+        buttonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadFragment(new MainPageFragment());
+            }
+        });
+        buttonReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadFragment(new MainPageFragment());
+            }
+        });
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Intent intent = new Intent(getActivity(), AdminPopupActivity.class);
-                // startActivity(intent);
                 loadFragment(new AddItemFragment());
+            }
+        });
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadFragment(new DeleteItemFragment());
             }
         });
 

@@ -7,6 +7,7 @@
     <color name="colorAccent">#03A1DA</color>
     <!-- For Admin Login Page -->
     <color name="purple">#8692f7</color>
+    <color name="gridLayout">#000000</color>
     <!-- For Table -->
     <color name="cell">#FFFFFFFF</color>
 </resources>
