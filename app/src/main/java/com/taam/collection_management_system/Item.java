@@ -2,27 +2,26 @@ package com.taam.collection_management_system;
 
 public class Item {
 
-    private String id;
     private String lot;
     private String name;
     private String category;
     private String period;
     private String description;
+    private String videoUrl;
 
     public Item() {}
 
-    public Item(String id, String lot, String name, String category, String period, String description) {
-        this.id = id;
+    public Item(String lot, String name, String category, String period,
+                String description, String videoUrl) {
         this.lot = lot;
         this.name = name;
         this.category = category;
         this.period = period;
         this.description = description;
+        this.videoUrl = videoUrl;
     }
 
     // Getters and setters
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
     public String getLot() { return lot; }
     public void setLot(String lot) { this.lot = lot; }
     public String getName() { return name; }
@@ -33,4 +32,6 @@ public class Item {
     public void setPeriod(String period) { this.period = period; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+    public String getVideoUrl() { return videoUrl; }
+    public void setVideoUrl(String videoUrl) { this.videoUrl = videoUrl; }
 }
