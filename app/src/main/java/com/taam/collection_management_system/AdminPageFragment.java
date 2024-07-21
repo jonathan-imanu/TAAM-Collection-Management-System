@@ -70,7 +70,7 @@ public class AdminPageFragment extends Fragment {
         buttonReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadFragment(new MainPageFragment());
+                loadFragment(new ReportFragment());
             }
         });
         buttonAdd.setOnClickListener(new View.OnClickListener() {

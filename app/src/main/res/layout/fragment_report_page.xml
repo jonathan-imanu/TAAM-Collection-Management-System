@@ -1,321 +1,304 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    tools:context=".LoginActivity">
-
+    tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="10dp">
+        android:layout_margin="30dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
-            android:id="@+id/registerLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alpha="0.9"
-            android:gravity="center"
             android:orientation="vertical"
-            android:padding="10dp"
-            android:visibility="gone">
+            android:padding="24dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="STUDENT REGISTER"
-                android:textSize="20sp"
+                android:text="Report"
+                android:textAlignment="center"
+                android:textColor="@color/purple"
+                android:textSize="36sp"
                 android:textStyle="bold" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="15dp"
-                android:hint="  Name"
-                tools:ignore="HardcodedText,RtlHardcoded">
+                android:text="Generate a item report by:"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:paddingBottom="0dp"
+                android:textColor="@color/purple" />
 
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/nameEdittext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:alpha="0.7"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textColor="@color/black" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="15dp"
-                android:hint="  Roll No"
-                tools:ignore="HardcodedText,RtlHardcoded">
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/rollEdittext"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:alpha="0.7"
-                    android:inputType="number"
-                    android:maxLines="1"
+                    android:text="Lot Number:"
+                    android:textSize="16sp"
                     android:textColor="@color/black" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <EditText
+                        android:id="@+id/editTextLotNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:hint="#0987"
+                        android:background="@drawable/custom_edittext"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="15dp"
-                android:hint="  Class"
-                tools:ignore="HardcodedText,RtlHardcoded">
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/classEdittext"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:alpha="0.7"
-                    android:inputType="text"
-                    android:maxLines="1"
+                    android:text="Name"
+                    android:textSize="16sp"
                     android:textColor="@color/black" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <EditText
+                        android:id="@+id/editTextName"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:hint="JiaQing lacquerware"
+                        android:background="@drawable/custom_edittext"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="15dp"
-                android:hint="  Email"
-                tools:ignore="HardcodedText,RtlHardcoded">
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/emailEdittext"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:alpha="0.7"
-                    android:inputType="text"
-                    android:maxLines="1"
+                    android:text="Category"
+                    android:textSize="16sp"
                     android:textColor="@color/black" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <EditText
+                        android:id="@+id/editTextCategory"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:hint="Ancient Jade"
+                        android:background="@drawable/custom_edittext"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="15dp"
-                android:hint="  Password"
-                tools:ignore="HardcodedText,RtlHardcoded">
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/passwordEdittext"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:alpha="0.7"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
+                    android:text="Text 4"
+                    android:textSize="16sp"
                     android:textColor="@color/black" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp">
 
+                    <EditText
+                        android:id="@+id/editTextCategory2"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:hint="Ask prof if needed"
+                        android:background="@drawable/custom_edittext"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Period"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp">
+
+                    <EditText
+                        android:id="@+id/editTextPeriod"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:hint="Late Bronze Age"
+                        android:background="@drawable/custom_edittext"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Text 6"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp">
+
+                    <EditText
+                        android:id="@+id/editTextPeriod2"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:hint="Ask Prof if needed"
+                        android:background="@drawable/custom_edittext"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp"
+                android:gravity="center_horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All Items" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All Items desc and picture only" />
+            </LinearLayout>
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:text="Register" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Forget Password?"
-
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:id="@+id/goLogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sign In"
-                    android:textColor="@color/purple_500"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/purple"
+                android:text="Submit"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="20dp" />
         </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/loginLayout"
-            android:layout_width="match_parent"
-            android:layout_height="468dp"
-            android:alpha="0.9"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="Generate Report"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="15dp"
-                android:hint="  Email"
-                tools:ignore="HardcodedText,RtlHardcoded">
-
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/loginEmailEdittext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:alpha="0.7"
-                    android:drawableLeft="@drawable/baseline_email_24"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textColor="@color/black" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="15dp"
-                android:hint="  Password"
-                tools:ignore="HardcodedText,RtlHardcoded">
-
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/loginPasswordEdittext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:alpha="0.7"
-                    android:drawableLeft="@drawable/baseline_password_24"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:textColor="@color/black" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="15dp"
-                android:hint="  Password"
-                tools:ignore="HardcodedText,RtlHardcoded">
-
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/loginPasswordEdittext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:alpha="0.7"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:textColor="@color/black" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Forget Password?"
-                    android:textColor="@color/purple_500"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:id="@+id/goRegister"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sign Up"
-                    android:textColor="@color/purple_500"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
     </androidx.cardview.widget.CardView>
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
