@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
@@ -8,4 +7,6 @@
     <color name="colorAccent">#03A1DA</color>
     <!-- For Admin Login Page -->
     <color name="purple">#8692f7</color>
+    <!-- For Table -->
+    <color name="cell">#FFFFFFFF</color>
 </resources>
