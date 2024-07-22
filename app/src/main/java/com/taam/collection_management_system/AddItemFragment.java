@@ -175,14 +175,14 @@ public class AddItemFragment extends Fragment {
                     return;
                 }
 
-                StorageReference reference = storageReference.child("videos/" +
+                StorageReference reference = storageReference.child("gallery/" +
                         UUID.randomUUID().toString());
                 reference.putFile(video).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        String videoUrl = video.toString();
+                        String galleryUrl = video.toString();
 
-                        Item item = new Item(lot, name, category, period, description, videoUrl);
+                        Item item = new Item(lot, name, category, period, description, galleryUrl);
 
                         myRef.child(lot).setValue(item).addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
