@@ -21,6 +21,8 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -34,7 +36,33 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import android.app.Activity;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import android.graphics.drawable.Drawable;
+import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -51,6 +79,7 @@ public class AddItemFragment extends Fragment {
     private Spinner spinnerCategory;
     private Spinner spinnerPeriod;
     private Button buttonAdd;
+    private Button buttonDelete;
 
     private FirebaseDatabase db;
 
@@ -76,6 +105,7 @@ public class AddItemFragment extends Fragment {
         imageView = view.findViewById(R.id.imageView);
         progressIndicator = view.findViewById(R.id.process);
         selectVideo = view.findViewById(R.id.selectVideo);
+        buttonDelete = view.findViewById(R.id.buttonDelete);
 
         db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
 
@@ -98,17 +128,21 @@ public class AddItemFragment extends Fragment {
             }
         });
 
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, new DeleteItemFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
         // Set up the spinner with periods
         ArrayAdapter<CharSequence> adapter_p = ArrayAdapter.createFromResource(getContext(),
                 R.array.period_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPeriod.setAdapter(adapter_p);
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addItem();
-            }
-        });
 
         //set up Image Select
 
