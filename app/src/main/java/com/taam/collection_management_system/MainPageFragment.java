@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -36,15 +37,14 @@ public class MainPageFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main_page, container, false);
-
-        Button buttonView = view.findViewById(R.id.buttonView);
-        Button buttonSearch = view.findViewById(R.id.buttonSearch);
-        Button buttonAdmin = view.findViewById(R.id.buttonAdmin);
+        ImageButton buttonView = view.findViewById(R.id.buttonView);
+        ImageButton buttonSearch = view.findViewById(R.id.buttonSearch);
+        ImageButton buttonAdmin = view.findViewById(R.id.buttonAdmin);
 
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // add functionality
+                // add new functionality
             }
         });
         buttonSearch.setOnClickListener(new View.OnClickListener() {
