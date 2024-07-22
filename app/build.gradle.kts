@@ -30,7 +30,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -46,5 +45,4 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.8.0")
     implementation("androidx.fragment:fragment-ktx:1.6.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
-
 }

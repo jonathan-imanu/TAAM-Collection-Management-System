@@ -6,56 +6,138 @@
     android:layout_height="match_parent"
     tools:context=".AddItemFragment">
 
-    <EditText
-        android:id="@+id/editTextTitle"
-        android:layout_width="0dp"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Title"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="?attr/colorSurface"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/process"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="861dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextAuthor"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Author"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTitle"
+        android:id="@+id/editTextName"
+        android:layout_width="597dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="108dp"
+        android:hint="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextGenre"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Genre"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAuthor"
+        android:id="@+id/editTextLot"
+        android:layout_width="448dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="4dp"
+        android:hint="Lot#"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
     <EditText
         android:id="@+id/editTextDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="446dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="4dp"
         android:hint="Description"
-        app:layout_constraintTop_toBottomOf="@+id/editTextGenre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextLot" />
+
 
     <Spinner
         android:id="@+id/spinnerCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDescription"
+        android:layout_marginTop="76dp"
+        android:entries="@array/categories_array"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescription" />
 
     <Button
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="440dp"
         android:text="@string/add_item"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCategory"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategory" />
+
+    <Spinner
+        android:id="@+id/spinnerPeriod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:entries="@array/period_array"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategory"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="448dp"
+        android:layout_height="227dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPeriod" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/selectVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:layout_marginStart="137dp"
+        android:layout_marginTop="554dp"
+        android:text="Select Image/Video"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="456dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Choose Period Below"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="364dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Choose Category Below"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextText5"
+        android:layout_width="448dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="66dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="To add a new record, please fill out all fields below!"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

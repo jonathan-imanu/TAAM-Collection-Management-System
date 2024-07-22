@@ -24,6 +24,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
+        //changed to adjust to new fields
         Item item = itemList.get(position);
         holder.textViewLot.setText(item.getLot());
         holder.textViewName.setText(item.getName());
@@ -38,13 +39,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     }
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewLot, textViewName, textViewCategory, textViewPeriod, textViewDescription;
+        TextView textViewLot, textViewName, textViewCategory, textViewPeriod,
+                textViewDescription;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewLot = itemView.findViewById(R.id.textViewLot);
             textViewName = itemView.findViewById(R.id.textViewName);
-            textViewCategory = itemView.findViewById(R.id.textViewCategory);
+            textViewCategory = itemView.findViewById(R.id.textViewCategory); //change to field
             textViewPeriod = itemView.findViewById(R.id.textViewPeriod);
             textViewDescription = itemView.findViewById(R.id.textViewDescription);
         }
