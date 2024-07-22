@@ -1,5 +1,6 @@
 package com.taam.collection_management_system;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,57 +21,48 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class DeleteItemFragment extends Fragment {
-    private EditText editTextTitle;
-    private Spinner spinnerCategory;
+    private EditText editLotNumber;
     private Button buttonDelete;
 
     private FirebaseDatabase db;
     private DatabaseReference itemsRef;
+    //DELETE FOLLOWING LINES BELOW WHEN INTEGRATING DELETE TO MAIN
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_delete_item, container, false);
 
-        editTextTitle = view.findViewById(R.id.editTextTitle);
-        spinnerCategory = view.findViewById(R.id.spinnerCategory);
-        buttonDelete = view.findViewById(R.id.buttonDelete);
+        editLotNumber = view.findViewById(R.id.editLotNumber);
 
-        db = FirebaseDatabase.getInstance("https://b07-demo-summer-2024-default-rtdb.firebaseio.com/");
+        db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
 
-        // Set up the spinner with categories
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.categories_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCategory.setAdapter(adapter);
-/*
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deleteItemByTitle();
             }
         });
-*/
+
         return view;
     }
-/*
-    private void deleteItemByTitle() {
-        String title = editTextTitle.getText().toString().trim();
-        String category = spinnerCategory.getSelectedItem().toString().toLowerCase();
 
-        if (title.isEmpty()) {
-            Toast.makeText(getContext(), "Please enter item title", Toast.LENGTH_SHORT).show();
+    private void deleteItemByTitle() {
+        String lot = editLotNumber.getText().toString().trim();
+
+        if (lot.isEmpty()) {
+            Toast.makeText(getContext(), "Please enter lot number", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        itemsRef = db.getReference("categories/" + category);
+        itemsRef = db.getReference("collection_data/");
         itemsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 boolean itemFound = false;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Item item = snapshot.getValue(Item.class);
-                    if (item != null && item.getName().equalsIgnoreCase(title)) {
+                    if (item != null && item.getLot().equalsIgnoreCase(lot)) {
                         snapshot.getRef().removeValue().addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
                                 Toast.makeText(getContext(), "Item deleted", Toast.LENGTH_SHORT).show();
@@ -95,5 +87,5 @@ public class DeleteItemFragment extends Fragment {
 
 
     }
-    */
+
 }

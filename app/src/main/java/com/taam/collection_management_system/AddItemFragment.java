@@ -14,6 +14,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import androidx.appcompat.app.AppCompatActivity;
+import android.app.Dialog;
+
 
 
 import androidx.activity.result.ActivityResult;
@@ -27,6 +29,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.progressindicator.DeterminateDrawable;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.*;
@@ -80,6 +83,9 @@ public class AddItemFragment extends Fragment {
     private Spinner spinnerPeriod;
     private Button buttonAdd;
     private Button buttonDelete;
+    private DatabaseReference itemsRef;
+
+    private EditText editLotNumber;
 
     private FirebaseDatabase db;
 
@@ -88,13 +94,19 @@ public class AddItemFragment extends Fragment {
     private Uri video;
     private StorageReference storageReference;
     private LinearProgressIndicator progressIndicator;
-    private MaterialButton selectVideo, uploadVideo;
+    private MaterialButton selectVideo;
+
+
+    //DELETE FOLLOWING LINES BELOW WHEN INTEGRATING DELETE TO MAIN
+    Dialog dialog;
+    Button buttonCancel, buttonDel;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_item, container, false);
+        View del_view = inflater.inflate(R.layout.fragment_delete_item, container, false);
 
         editTextName = view.findViewById(R.id.editTextName);
         editTextLot = view.findViewById(R.id.editTextLot);
@@ -107,10 +119,47 @@ public class AddItemFragment extends Fragment {
         selectVideo = view.findViewById(R.id.selectVideo);
         buttonDelete = view.findViewById(R.id.buttonDelete);
 
+
+
+
         db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
 
         FirebaseApp.initializeApp(requireContext());
         storageReference = FirebaseStorage.getInstance().getReference();
+
+        //DEL BELOW
+        dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.fragment_delete_item);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+
+        editLotNumber = dialog.findViewById(R.id.editLotNumber);
+
+        buttonDel = dialog.findViewById(R.id.buttonDel);
+        buttonCancel = dialog.findViewById(R.id.buttonCancel);
+
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.show();
+            }
+        });
+
+        buttonDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteItemByTitle();
+            }
+        });
+
+
 
         MaterialToolbar toolbar = view.findViewById(R.id.toolbar);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
@@ -128,7 +177,7 @@ public class AddItemFragment extends Fragment {
             }
         });
 
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
+        /*buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
@@ -136,7 +185,7 @@ public class AddItemFragment extends Fragment {
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
-        });
+        });*/
 
         // Set up the spinner with periods
         ArrayAdapter<CharSequence> adapter_p = ArrayAdapter.createFromResource(getContext(),
@@ -247,5 +296,43 @@ public class AddItemFragment extends Fragment {
                 Toast.makeText(getContext(), "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+        private void deleteItemByTitle() {
+            String lot = editLotNumber.getText().toString().trim();
+
+            if (lot.isEmpty()) {
+                Toast.makeText(getContext(), "Please enter lot number", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            itemsRef = db.getReference("collection_data/");
+            itemsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    boolean itemFound = false;
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Item item = snapshot.getValue(Item.class);
+                        if (item != null && item.getLot().equalsIgnoreCase(lot)) {
+                            snapshot.getRef().removeValue().addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getContext(), "Item deleted", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getContext(), "Failed to delete item", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            itemFound = true;
+                            break;
+                        }
+                    }
+                    if (!itemFound) {
+                        Toast.makeText(getContext(), "Item not found", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(getContext(), "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
     }
 }
