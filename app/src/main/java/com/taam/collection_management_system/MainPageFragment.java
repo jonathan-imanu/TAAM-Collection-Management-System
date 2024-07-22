@@ -50,7 +50,7 @@ public class MainPageFragment extends Fragment {
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // add functionality
+                loadFragment(new SearchFragment());
             }
         });
         buttonAdmin.setOnClickListener(new View.OnClickListener() {
