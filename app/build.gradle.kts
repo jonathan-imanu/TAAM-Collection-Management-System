@@ -41,7 +41,7 @@ dependencies {
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.github.bumptech.glide:glide:4.16.0")
-    implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("androidx.activity:activity-ktx:1.8.0")
     implementation("androidx.fragment:fragment-ktx:1.6.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
 }

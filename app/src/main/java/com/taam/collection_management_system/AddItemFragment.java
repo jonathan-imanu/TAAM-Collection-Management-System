@@ -116,10 +116,8 @@ public class AddItemFragment extends Fragment {
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
-                            video = result.getData().getData();
+                        if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {video = result.getData().getData();
                             if (video != null) {
-                                uploadVideo.setEnabled(true);
                                 Glide.with(getContext()).load(video).into(imageView);
                             } else {
                                 Toast.makeText(getContext(), "No video selected.", Toast.LENGTH_SHORT).show();
