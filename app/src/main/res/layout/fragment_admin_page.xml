@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainPageFragment">
+
+    <HorizontalScrollView
+        android:id="@+id/table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:background="@color/cell"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:id="@+id/textViewLot"
+                    android:layout_width="45sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Lot" />
+
+                <TextView
+                    android:id="@+id/textViewName"
+                    android:layout_width="125sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Name" />
+
+                <TextView
+                    android:id="@+id/viewButton"
+                    android:layout_width="125sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Period" />
+
+                <TextView
+                    android:id="@+id/textViewPeriod"
+                    android:layout_width="125sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Category" />
+
+                <TextView
+                    android:id="@+id/textViewDescription"
+                    android:layout_width="200sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Description" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/buttonBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="10dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginBottom="9dp"
+            android:alignmentMode="alignMargins"
+            android:columnCount="3"
+            android:columnOrderPreserved="false"
+            android:padding="10dp"
+            android:rowCount="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageButton
+                android:id="@+id/buttonAdd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/purple"
+                android:src="@drawable/admin_screen_add"
+            android:contentDescription="Add New Item" />
+
+            <ImageButton
+                android:id="@+id/buttonReport"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/purple"
+                android:src="@drawable/admin_screen_report"
+            android:contentDescription="Download Item Report" />
+
+            <ImageButton
+                android:id="@+id/buttonDelete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/purple"
+                android:src="@drawable/admin_screen_remove"
+            android:contentDescription="Remove Item" />
+
+            <ImageButton
+                android:id="@+id/buttonSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/purple"
+                android:src="@drawable/main_screen_search"
+            android:contentDescription="Search for items" />
+
+            <ImageButton
+                android:id="@+id/buttonHome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/purple"
+                android:src="@drawable/admin_screen_home"
+            android:contentDescription="Go back to home screen" />
+
+            <ImageButton
+                android:id="@+id/buttonView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/purple"
+                android:src="@drawable/main_screen_view"
+            android:contentDescription="View Item" />
+
+        </GridLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
