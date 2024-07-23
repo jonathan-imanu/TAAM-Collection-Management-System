@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,7 @@ abstract public class NavigationPageFragment extends Fragment {
     protected RecyclerView recyclerView;
     protected ItemAdapter itemAdapter;
     protected List<Item> itemList;
+    protected List<CheckBox> checkBoxList;
     protected Spinner spinnerCategory;
 
     protected FirebaseDatabase db;
@@ -42,6 +44,7 @@ abstract public class NavigationPageFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 itemList.clear();
+                checkBoxList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Item item = snapshot.getValue(Item.class);
                     itemList.add(item);
@@ -60,7 +63,8 @@ abstract public class NavigationPageFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         itemList = new ArrayList<>();
-        itemAdapter = new ItemAdapter(itemList);
+        checkBoxList = new ArrayList<>();
+        itemAdapter = new ItemAdapter(itemList, checkBoxList);
         recyclerView.setAdapter(itemAdapter);
 
         db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
