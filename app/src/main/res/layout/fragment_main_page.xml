@@ -9,10 +9,11 @@
     <HorizontalScrollView
         android:id="@+id/table"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:fillViewport="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonBar">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -26,6 +27,10 @@
                 android:layout_marginBottom="2dp"
                 android:background="@color/cell"
                 android:paddingHorizontal="4dp">
+
+                <Space
+                    android:layout_width="45sp"
+                    android:layout_height="match_parent"/>
 
                 <TextView
                     android:id="@+id/textViewLot"
@@ -67,24 +72,22 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
     </HorizontalScrollView>
 
     <GridLayout
-        android:id="@+id/gridLayout"
-        android:layout_width="0dp"
+        android:id="@+id/buttonBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="9dp"
         android:alignmentMode="alignMargins"
-        android:columnCount="3"
         android:columnOrderPreserved="false"
-        android:padding="10dp"
+        android:columnCount="3"
         android:rowCount="1"
+        android:background="@color/white"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
