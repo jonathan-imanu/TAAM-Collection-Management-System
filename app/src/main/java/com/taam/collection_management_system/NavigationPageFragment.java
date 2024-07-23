@@ -78,4 +78,14 @@ abstract public class NavigationPageFragment extends Fragment {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
+    protected List<String> getSelectedLot() {
+        List<String> selectedLot = new ArrayList<String>();
+        for (int i = 0; i < itemList.size(); i++) {
+            if (checkBoxList.get(i).isSelected()) {
+                selectedLot.add(itemList.get(i).getLot());
+            }
+        }
+        return selectedLot;
+    }
 }
