@@ -24,14 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminPageFragment extends Fragment {
-    private RecyclerView recyclerView;
-    private ItemAdapter itemAdapter;
-    private List<Item> itemList;
-    private Spinner spinnerCategory;
-
-    private FirebaseDatabase db;
-    private DatabaseReference itemsRef;
+public class AdminPageFragment extends NavigationPageFragment {
 
     @Nullable
     @Override
@@ -48,7 +41,6 @@ public class AdminPageFragment extends Fragment {
         ImageButton buttonAdd = view.findViewById(R.id.buttonAdd);
         ImageButton buttonReport = view.findViewById(R.id.buttonReport);
 
-
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,27 +55,21 @@ public class AdminPageFragment extends Fragment {
         });
         buttonHome.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 loadFragment(new MainPageFragment());
             }
         });
         buttonReport.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                loadFragment(new MainPageFragment());
-            }
+            public void onClick(View v) { loadFragment(new MainPageFragment()); }
         });
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                loadFragment(new AddItemFragment());
-            }
+            public void onClick(View v) { loadFragment(new AddItemFragment()); }
         });
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                loadFragment(new DeleteItemFragment());
-            }
+            public void onClick(View v) { loadFragment(new DeleteItemFragment()); }
         });
 
         fillRecycler(view.findViewById(R.id.recyclerView));
@@ -91,42 +77,4 @@ public class AdminPageFragment extends Fragment {
         return view;
     }
 
-    private void fetchItemsFromDatabase() {
-        itemsRef = db.getReference("collection_data/");
-        itemsRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                itemList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Item item = snapshot.getValue(Item.class);
-                    itemList.add(item);
-                }
-                itemAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle possible errors
-            }
-        });
-    }
-
-    private void fillRecycler( androidx.recyclerview.widget.RecyclerView recyclerView) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        itemList = new ArrayList<>();
-        itemAdapter = new ItemAdapter(itemList);
-        recyclerView.setAdapter(itemAdapter);
-
-        db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
-        DatabaseReference myRef = db.getReference();
-        fetchItemsFromDatabase();
-    }
-
-    private void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 }

@@ -24,19 +24,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainPageFragment extends Fragment {
-    private RecyclerView recyclerView;
-    private ItemAdapter itemAdapter;
-    private List<Item> itemList;
-    private Spinner spinnerCategory;
-
-    private FirebaseDatabase db;
-    private DatabaseReference itemsRef;
+public class MainPageFragment extends NavigationPageFragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main_page, container, false);
+
+        // Three Main Screen Entries
         ImageButton buttonView = view.findViewById(R.id.buttonView);
         ImageButton buttonSearch = view.findViewById(R.id.buttonSearch);
         ImageButton buttonAdmin = view.findViewById(R.id.buttonAdmin);
@@ -44,65 +39,23 @@ public class MainPageFragment extends Fragment {
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // add new functionality
+                loadFragment(new MainPageFragment());
             }
         });
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragment(new SearchFragment());
+                loadFragment(new MainPageFragment());
             }
         });
         buttonAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // Intent intent = new Intent(getActivity(), AdminPopupActivity.class);
-                // startActivity(intent);
-                loadFragment(new AdminLoginFragment());
-            }
+            public void onClick(View v) { loadFragment(new AdminLoginFragment()); }
         });
 
         fillRecycler(view.findViewById(R.id.recyclerView));
 
         return view;
     }
-
-    private void fetchItemsFromDatabase() {
-        itemsRef = db.getReference("collection_data/");
-        itemsRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                itemList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Item item = snapshot.getValue(Item.class);
-                    itemList.add(item);
-                }
-                itemAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle possible errors
-            }
-        });
-    }
-
-    private void fillRecycler( androidx.recyclerview.widget.RecyclerView recyclerView) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        itemList = new ArrayList<>();
-        itemAdapter = new ItemAdapter(itemList);
-        recyclerView.setAdapter(itemAdapter);
-
-        db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
-        DatabaseReference myRef = db.getReference();
-        fetchItemsFromDatabase();
-    }
-
-    private void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
+    
 }
