@@ -52,10 +52,11 @@ abstract public class TablePageFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Item item = snapshot.getValue(Item.class);
                     if (item != null && queryItem == null ||
-                            (queryItem.getLot().isEmpty() || item.getLot().equals(queryItem.getLot())) &&
-                            (queryItem.getName().isEmpty() || item.getName().contains(queryItem.getName())) &&
-                            (queryItem.getCategory().isEmpty() || item.getCategory().equals(queryItem.getCategory())) &&
-                            (queryItem.getPeriod().isEmpty() || item.getPeriod().equals(queryItem.getPeriod()))) {
+                            (queryItem.getLot().isEmpty() || item.getLot().toLowerCase().equals(queryItem.getLot().toLowerCase())) &&
+                            (queryItem.getName().isEmpty() || item.getName().toLowerCase().contains(queryItem.getName().toLowerCase())) &&
+                            (queryItem.getCategory().isEmpty() || item.getCategory().toLowerCase().equals(queryItem.getCategory().toLowerCase())) &&
+                            (queryItem.getPeriod().isEmpty() || item.getPeriod().toLowerCase().equals(queryItem.getPeriod().toLowerCase())) &&
+                            (queryItem.getDescription().isEmpty() || item.getDescription().toLowerCase().contains(queryItem.getDescription().toLowerCase()))) {
                         itemList.add(item);
                     }
                 }

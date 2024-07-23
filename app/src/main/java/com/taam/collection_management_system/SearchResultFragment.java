@@ -50,7 +50,7 @@ public class SearchResultFragment extends TablePageFragment {
             queryItem.setName(getArguments().getString(ARG_NAME, ""));
             queryItem.setCategory(getArguments().getString(ARG_CATEGORY, ""));
             queryItem.setPeriod(getArguments().getString(ARG_PERIOD, ""));
-            // queryItem.setKeyword(getArguments().getString(ARG_KEYWORD, ""));
+            queryItem.setDescription(getArguments().getString(ARG_KEYWORD, ""));
         }
     }
 
@@ -78,8 +78,8 @@ public class SearchResultFragment extends TablePageFragment {
 
     private boolean isAnySearchParameterFilled() {
         return (!queryItem.getLot().isEmpty() || !queryItem.getName().isEmpty() ||
-                !queryItem.getCategory().isEmpty() || !queryItem.getPeriod().isEmpty());
-        // keyword is empty
+                !queryItem.getCategory().isEmpty() || !queryItem.getPeriod().isEmpty()) ||
+                !queryItem.getDescription().isEmpty();
     }
 
     private void updateSearchResultTextView() {
@@ -87,8 +87,7 @@ public class SearchResultFragment extends TablePageFragment {
         String nameText = queryItem.getName().isEmpty() ? "_" : queryItem.getName();
         String categoryText = queryItem.getCategory().isEmpty() ? "_" : queryItem.getCategory();
         String periodText = queryItem.getPeriod().isEmpty() ? "_" : queryItem.getPeriod();
-        //String keywordText = keyword.isEmpty() ? "_" : keyword;
-        String keywordText = "";
+        String keywordText = queryItem.getDescription().isEmpty() ? "_" : queryItem.getDescription();
 
         String resultText = String.format("Result based on\nLot#%s  Name:%s  Category:%s  Period:%s  Keyword:%s",
                 lotText, nameText, categoryText, periodText, keywordText);
