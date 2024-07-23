@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,22 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchResultFragment extends Fragment {
-    private static final String ARG_LOT_NUMBER = "lot_number";
-    private static final String ARG_NAME = "name";
-    private static final String ARG_CATEGORY = "category";
-    private static final String ARG_PERIOD = "period";
-    private static final String ARG_KEYWORD = "keyword";
-
-    private RecyclerView recyclerView;
-    private ItemAdapter itemAdapter;
-    private List<Item> itemList;
-    private String lotNumber;
-    private String name;
-    private String category;
-    private String period;
-    private String keyword;
-
+public class SearchResultFragment extends TablePageFragment {
     private FirebaseDatabase db;
     private DatabaseReference itemsRef;
     private TextView searchResultTextView;
@@ -59,11 +45,12 @@ public class SearchResultFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            lotNumber = getArguments().getString(ARG_LOT_NUMBER, "");
-            name = getArguments().getString(ARG_NAME, "");
-            category = getArguments().getString(ARG_CATEGORY, "");
-            period = getArguments().getString(ARG_PERIOD, "");
-            keyword = getArguments().getString(ARG_KEYWORD, "");
+            queryItem = new Item();
+            queryItem.setLot(getArguments().getString(ARG_LOT_NUMBER, ""));
+            queryItem.setName(getArguments().getString(ARG_NAME, ""));
+            queryItem.setCategory(getArguments().getString(ARG_CATEGORY, ""));
+            queryItem.setPeriod(getArguments().getString(ARG_PERIOD, ""));
+            // queryItem.setKeyword(getArguments().getString(ARG_KEYWORD, ""));
         }
     }
 
@@ -89,59 +76,19 @@ public class SearchResultFragment extends Fragment {
         return view;
     }
 
-    private void fetchItemsFromDatabase() {
-        itemsRef = db.getReference("collection_data/");
-        itemsRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                itemList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Item item = snapshot.getValue(Item.class);
-                    if (item != null &&
-                            (lotNumber.isEmpty() || item.getLot().equals(lotNumber)) &&
-                            (name.isEmpty() || item.getName().contains(name)) &&
-                            (category.isEmpty() || item.getCategory().equals(category)) &&
-                            (period.isEmpty() || item.getPeriod().equals(period)) &&
-                            (keyword.isEmpty() || item.getDescription().contains(keyword))) {
-                        itemList.add(item);
-                    }
-                }
-                itemAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle possible errors
-            }
-        });
-    }
-
-    private void fillRecycler(RecyclerView recyclerView) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        itemList = new ArrayList<>();
-        itemAdapter = new ItemAdapter(itemList);
-        recyclerView.setAdapter(itemAdapter);
-
-        db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
-        if (isAnySearchParameterFilled()) {
-            fetchItemsFromDatabase();
-        } else {
-            itemList.clear();
-            itemAdapter.notifyDataSetChanged();
-        }
-    }
-
     private boolean isAnySearchParameterFilled() {
-        return !lotNumber.isEmpty() || !name.isEmpty() || !category.isEmpty() || !period.isEmpty() || !keyword.isEmpty();
+        return (!queryItem.getLot().isEmpty() || !queryItem.getName().isEmpty() ||
+                !queryItem.getCategory().isEmpty() || !queryItem.getPeriod().isEmpty());
+        // keyword is empty
     }
 
     private void updateSearchResultTextView() {
-        String lotText = lotNumber.isEmpty() ? "_" : lotNumber;
-        String nameText = name.isEmpty() ? "_" : name;
-        String categoryText = category.isEmpty() ? "_" : category;
-        String periodText = period.isEmpty() ? "_" : period;
-        String keywordText = keyword.isEmpty() ? "_" : keyword;
+        String lotText = queryItem.getLot().isEmpty() ? "_" : queryItem.getLot();
+        String nameText = queryItem.getName().isEmpty() ? "_" : queryItem.getName();
+        String categoryText = queryItem.getCategory().isEmpty() ? "_" : queryItem.getCategory();
+        String periodText = queryItem.getPeriod().isEmpty() ? "_" : queryItem.getPeriod();
+        //String keywordText = keyword.isEmpty() ? "_" : keyword;
+        String keywordText = "";
 
         String resultText = String.format("Result based on\nLot#%s  Name:%s  Category:%s  Period:%s  Keyword:%s",
                 lotText, nameText, categoryText, periodText, keywordText);
@@ -149,10 +96,4 @@ public class SearchResultFragment extends Fragment {
         searchResultTextView.setText(resultText);
     }
 
-    private void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 }

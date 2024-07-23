@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.CheckBox;
 
@@ -24,13 +23,18 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class NavigationPageFragment extends Fragment {
+abstract public class TablePageFragment extends Fragment {
+    protected static final String ARG_LOT_NUMBER = "lot_number";
+    protected static final String ARG_NAME = "name";
+    protected static final String ARG_CATEGORY = "category";
+    protected static final String ARG_PERIOD = "period";
+    protected static final String ARG_KEYWORD = "keyword";
+
     protected RecyclerView recyclerView;
     protected ItemAdapter itemAdapter;
     protected List<Item> itemList;
     protected List<CheckBox> checkBoxList;
-    protected Spinner spinnerCategory;
-
+    protected Item queryItem;
     protected FirebaseDatabase db;
     protected DatabaseReference itemsRef;
 
@@ -47,7 +51,13 @@ abstract public class NavigationPageFragment extends Fragment {
                 checkBoxList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Item item = snapshot.getValue(Item.class);
-                    itemList.add(item);
+                    if (item != null && queryItem == null ||
+                            (queryItem.getLot().isEmpty() || item.getLot().equals(queryItem.getLot())) &&
+                            (queryItem.getName().isEmpty() || item.getName().contains(queryItem.getName())) &&
+                            (queryItem.getCategory().isEmpty() || item.getCategory().equals(queryItem.getCategory())) &&
+                            (queryItem.getPeriod().isEmpty() || item.getPeriod().equals(queryItem.getPeriod()))) {
+                        itemList.add(item);
+                    }
                 }
                 itemAdapter.notifyDataSetChanged();
             }
