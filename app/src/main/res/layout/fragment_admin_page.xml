@@ -85,12 +85,42 @@
         android:alignmentMode="alignMargins"
         android:columnOrderPreserved="false"
         android:columnCount="3"
-        android:rowCount="1"
+        android:rowCount="2"
         android:background="@color/white"
         android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/buttonAdd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/purple"
+            android:src="@drawable/admin_screen_add"
+        android:contentDescription="Add New Item" />
+
+        <ImageButton
+            android:id="@+id/buttonReport"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/purple"
+            android:src="@drawable/admin_screen_report"
+        android:contentDescription="Download Item Report" />
+
+        <ImageButton
+            android:id="@+id/buttonDelete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/purple"
+            android:src="@drawable/admin_screen_remove"
+        android:contentDescription="Remove Item" />
 
         <ImageButton
             android:id="@+id/buttonSearch"
@@ -100,17 +130,17 @@
             android:layout_margin="5dp"
             android:backgroundTint="@color/purple"
             android:src="@drawable/main_screen_search"
-            android:contentDescription="Search for items" />
+        android:contentDescription="Search for items" />
 
         <ImageButton
-            android:id="@+id/buttonAdmin"
+            android:id="@+id/buttonHome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:layout_margin="5dp"
             android:backgroundTint="@color/purple"
-            android:src="@drawable/main_screen_admin"
-            android:contentDescription="Go to Admin Screen" />
+            android:src="@drawable/admin_screen_home"
+        android:contentDescription="Go back to home screen" />
 
         <ImageButton
             android:id="@+id/buttonView"
@@ -120,7 +150,8 @@
             android:layout_margin="5dp"
             android:backgroundTint="@color/purple"
             android:src="@drawable/main_screen_view"
-            android:contentDescription="View Item" />
+        android:contentDescription="View Item" />
 
     </GridLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

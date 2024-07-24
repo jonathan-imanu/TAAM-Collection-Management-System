@@ -21,7 +21,8 @@
             android:id="@+id/etLotNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:maxLength="10" />
     </LinearLayout>
 
     <LinearLayout
@@ -91,7 +92,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Keyword(Optional):" />
+            android:text="Keyword:" />
 
         <EditText
             android:id="@+id/etKeyword"
