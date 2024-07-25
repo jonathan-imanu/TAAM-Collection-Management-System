@@ -75,7 +75,7 @@ public class AdminPageFragment extends TablePageFragment {
         });
         buttonReport.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { loadFragment(new MainPageFragment()); }
+            public void onClick(View v) { loadFragment(new ReportFragment()); }
         });
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
