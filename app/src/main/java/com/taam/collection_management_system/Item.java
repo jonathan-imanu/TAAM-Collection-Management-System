@@ -33,5 +33,5 @@ public class Item {
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
     public String getGalleryUrl() { return galleryUrl; }
-    public void setGalleryUrl(String videoUrl) { this.galleryUrl = galleryUrl; }
+    public void setGalleryUrl(String galleryUrl) { this.galleryUrl = galleryUrl; }
 }
