@@ -180,7 +180,8 @@ public class AddItemFragment extends Fragment {
                 reference.putFile(video).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        String galleryUrl = video.toString();
+                        String[] completeUrl = reference.toString().split("/");
+                        String galleryUrl = completeUrl[4];
 
                         Item item = new Item(lot, name, category, period, description, galleryUrl);
 

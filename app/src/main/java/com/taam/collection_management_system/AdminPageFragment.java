@@ -14,9 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.app.Dialog;
 
+import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnFailureListener;
 
 import java.util.List;
 
@@ -114,22 +119,40 @@ public class AdminPageFragment extends TablePageFragment {
     private void deleteItemByTitle(List<String> selectedItems) {
 
         itemsRef = db.getReference("collection_data/");
+        FirebaseStorage storage = FirebaseStorage.getInstance("gs://taam-management-system.appspot.com/");
+        StorageReference storageRef = storage.getReference("gallery/");
+
         itemsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (int i = 0; i < selectedItems.size(); i++) {
+                for (String selectedItem : selectedItems) {
                     boolean itemFound = false;
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Item item = snapshot.getValue(Item.class);
-                        if (item != null && item.getLot().equalsIgnoreCase(selectedItems.get(i))) {
-                            snapshot.getRef().removeValue().addOnCompleteListener(task -> {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getContext(), "Item deleted", Toast.LENGTH_SHORT).show();
-                                    dialog.dismiss();
-                                } else {
-                                    Toast.makeText(getContext(), "Failed to delete item", Toast.LENGTH_SHORT).show();
+                        if (item != null && item.getLot().equalsIgnoreCase(selectedItem)) {
+                            String galleryUrl = item.getGalleryUrl();
+                            StorageReference desertRef = storageRef.child(galleryUrl);
+
+                            desertRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    snapshot.getRef().removeValue().addOnCompleteListener(task -> {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(getContext(), "Item deleted", Toast.LENGTH_SHORT).show();
+                                            dialog.dismiss();
+                                            checkBoxList.clear();
+                                        } else {
+                                            Toast.makeText(getContext(), "Failed to delete item", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception exception) {
+                                    Toast.makeText(getContext(), "Error deleting file: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
+
                             itemFound = true;
                             break;
                         }
@@ -139,6 +162,7 @@ public class AdminPageFragment extends TablePageFragment {
                     }
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(getContext(), "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();

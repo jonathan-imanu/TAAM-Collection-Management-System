@@ -19,20 +19,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:layout_marginTop="861dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/imageView" />
 
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="597dp"
         android:layout_height="69dp"
-        android:layout_marginTop="108dp"
         android:hint="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/textView1" />
 
     <EditText
         android:id="@+id/editTextLot"
@@ -61,83 +59,76 @@
         android:id="@+id/spinnerCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
         android:entries="@array/categories_array"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/textCat" />
 
     <Button
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="440dp"
         android:text="@string/add_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCategory" />
+        app:layout_constraintTop_toBottomOf="@+id/process" />
 
     <Spinner
         android:id="@+id/spinnerPeriod"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
         android:entries="@array/period_array"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCategory"
+        app:layout_constraintTop_toBottomOf="@+id/textPer"
         tools:layout_editor_absoluteX="0dp" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="448dp"
         android:layout_height="227dp"
-        android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerPeriod" />
+        app:layout_constraintTop_toBottomOf="@+id/selectVideo" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/selectVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView"
-        android:layout_marginStart="137dp"
-        android:layout_marginTop="554dp"
         android:text="Select Image/Video"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/spinnerPeriod" />
 
-    <EditText
-        android:id="@+id/editTextText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="456dp"
+    <TextView
+        android:id="@+id/textPer"
+        android:layout_width="186dp"
+        android:layout_height="26dp"
         android:ems="10"
         android:inputType="text"
         android:text="Choose Period Below"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/spinnerCategory" />
 
-    <EditText
-        android:id="@+id/editTextText4"
+    <TextView
+        android:id="@+id/textCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="364dp"
         android:ems="10"
         android:inputType="text"
         android:text="Choose Category Below"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/editTextDescription" />
 
-    <EditText
-        android:id="@+id/editTextText5"
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="448dp"
         android:layout_height="42dp"
-        android:layout_marginTop="66dp"
+        android:textSize="18dp"
         android:ems="10"
-        android:inputType="text"
         android:text="To add a new record, please fill out all fields below!"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
