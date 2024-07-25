@@ -93,7 +93,7 @@ abstract public class TablePageFragment extends Fragment {
     protected List<String> getSelectedLot() {
         List<String> selectedLot = new ArrayList<String>();
         for (int i = 0; i < itemList.size(); i++) {
-            if (checkBoxList.get(i).isSelected()) {
+            if (checkBoxList.get(i).isChecked()) {
                 selectedLot.add(itemList.get(i).getLot());
             }
         }
