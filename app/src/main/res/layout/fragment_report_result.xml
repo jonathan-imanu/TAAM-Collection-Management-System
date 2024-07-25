@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReportResultFragment">
+
+    <HorizontalScrollView
+        android:id="@+id/table"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonBar">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/purple">
+
+            <TextView
+                android:id="@+id/searchResultTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Result based on Lot#__  Category__  Period__  Keyword__"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="4dp"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:background="@color/cell"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:id="@+id/textViewLot"
+                    android:layout_width="45sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Lot" />
+
+                <TextView
+                    android:id="@+id/textViewName"
+                    android:layout_width="125sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Name" />
+
+                <TextView
+                    android:id="@+id/viewButton"
+                    android:layout_width="125sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Period" />
+
+                <TextView
+                    android:id="@+id/textViewPeriod"
+                    android:layout_width="125sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Category" />
+
+                <TextView
+                    android:id="@+id/textViewDescription"
+                    android:layout_width="200sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Description" />
+
+                <TextView
+                    android:id="@+id/textViewImage"
+                    android:layout_width="200sp"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Image/Video Thumbnail" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@id/buttonBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:elevation="10dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+            <Button
+                android:id="@+id/buttonView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple"
+                android:layout_marginRight="10dp"
+                android:text="View"/>
+            <Button
+                android:id="@+id/buttonBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple"
+                android:text="Back"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
