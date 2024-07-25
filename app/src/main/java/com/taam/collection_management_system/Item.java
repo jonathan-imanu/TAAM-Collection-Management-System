@@ -7,15 +7,18 @@ public class Item {
     private String category;
     private String period;
     private String description;
+    private String galleryUrl;
 
     public Item() {}
 
-    public Item(String lot, String name, String category, String period, String description) {
+    public Item(String lot, String name, String category, String period,
+                String description, String galleryUrl) {
         this.lot = lot;
         this.name = name;
         this.category = category;
         this.period = period;
         this.description = description;
+        this.galleryUrl = galleryUrl;
     }
 
     // Getters and setters
@@ -29,4 +32,6 @@ public class Item {
     public void setPeriod(String period) { this.period = period; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+    public String getGalleryUrl() { return galleryUrl; }
+    public void setGalleryUrl(String galleryUrl) { this.galleryUrl = galleryUrl; }
 }

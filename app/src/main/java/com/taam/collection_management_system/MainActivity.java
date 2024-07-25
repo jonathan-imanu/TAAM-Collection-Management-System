@@ -26,20 +26,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
-        DatabaseReference myRef = db.getReference();
-
         if (savedInstanceState == null) {
-            loadFragment(new MainPageFragment());
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, new MainPageFragment());
+            transaction.commit();
         }
 
-    }
-
-    private void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
     }
 
     @Override

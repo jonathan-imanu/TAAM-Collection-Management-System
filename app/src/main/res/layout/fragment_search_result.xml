@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainPageFragment">
+    tools:context=".SearchResultFragment">
 
     <HorizontalScrollView
         android:id="@+id/table"
@@ -20,6 +20,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@color/purple">
+
+            <TextView
+                android:id="@+id/searchResultTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Result based on Lot#__  Category__  Period__  Keyword__"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="4dp"
+                android:maxLines="2"
+                android:ellipsize="end" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,80 +90,36 @@
 
     </HorizontalScrollView>
 
-    <GridLayout
-        android:id="@+id/buttonBar"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@id/buttonBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alignmentMode="alignMargins"
-        android:columnOrderPreserved="false"
-        android:columnCount="3"
-        android:rowCount="2"
-        android:background="@color/white"
+        android:padding="10dp"
         android:elevation="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <ImageButton
-            android:id="@+id/buttonAdd"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/purple"
-            android:src="@drawable/admin_screen_add"
-        android:contentDescription="Add New Item" />
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+            <Button
+                android:id="@+id/buttonView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple"
+                android:layout_marginRight="10dp"
+                android:text="View"/>
+            <Button
+                android:id="@+id/buttonBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple"
+                android:text="Back"/>
+        </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/buttonReport"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/purple"
-            android:src="@drawable/admin_screen_report"
-        android:contentDescription="Download Item Report" />
-
-        <ImageButton
-            android:id="@+id/buttonDelete"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/purple"
-            android:src="@drawable/admin_screen_remove"
-        android:contentDescription="Remove Item" />
-
-        <ImageButton
-            android:id="@+id/buttonSearch"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/purple"
-            android:src="@drawable/main_screen_search"
-        android:contentDescription="Search for items" />
-
-        <ImageButton
-            android:id="@+id/buttonHome"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/purple"
-            android:src="@drawable/admin_screen_home"
-        android:contentDescription="Go back to home screen" />
-
-        <ImageButton
-            android:id="@+id/buttonView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/purple"
-            android:src="@drawable/main_screen_view"
-        android:contentDescription="View Item" />
-
-    </GridLayout>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
