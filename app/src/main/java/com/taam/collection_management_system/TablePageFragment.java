@@ -29,6 +29,7 @@ abstract public class TablePageFragment extends Fragment {
     protected static final String ARG_CATEGORY = "category";
     protected static final String ARG_PERIOD = "period";
     protected static final String ARG_KEYWORD = "keyword";
+    protected static final String ARG_SIGNAL = "signal";
 
     protected RecyclerView recyclerView;
     protected ItemAdapter itemAdapter;

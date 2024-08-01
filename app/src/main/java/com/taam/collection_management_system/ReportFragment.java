@@ -37,6 +37,7 @@ public class ReportFragment extends TablePageFragment {
     private String lot, name, category, category2, period, period2;
 
     protected ReportAdapter reportAdapter;
+    protected ReportDescAdapter reportDescAdapter;
     private ReportResultFragment reportResultFragment;
 
     @Nullable
@@ -86,20 +87,25 @@ public class ReportFragment extends TablePageFragment {
 
     }
 
-    @Override
-    protected void fillRecycler(RecyclerView recyclerView) {
+
+    protected void fillRecycler(RecyclerView recyclerView, int signal) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         itemList = new ArrayList<>();
-        reportAdapter = new ReportAdapter(itemList);
-        recyclerView.setAdapter(reportAdapter);
+
+        if (signal == 1) {
+            reportAdapter = new ReportAdapter(itemList);
+            recyclerView.setAdapter(reportAdapter);
+        } else {
+            reportDescAdapter = new ReportDescAdapter(itemList);
+            recyclerView.setAdapter(reportDescAdapter);
+        }
 
         db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
         DatabaseReference myRef = db.getReference();
-        fetchItemsFromDatabase();
+        fetchItemsFromDatabase(signal);
     }
 
-    @Override
-    protected void fetchItemsFromDatabase() {
+    protected void fetchItemsFromDatabase(int signal) {
         itemsRef = db.getReference("collection_data/");
         itemsRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -115,7 +121,11 @@ public class ReportFragment extends TablePageFragment {
                         itemList.add(item);
                     }
                 }
-                reportAdapter.notifyDataSetChanged();
+                if (signal == 1) {
+                    reportAdapter.notifyDataSetChanged();
+                } else {
+                    reportDescAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
@@ -165,7 +175,12 @@ public class ReportFragment extends TablePageFragment {
                         signal = 1;
                         break;
                     case 3:
-                        //desc pic only category
+                        category = editTextCategory2.getText().toString().trim();
+                        if (category.isEmpty()) {
+                            Toast.makeText(getContext(), "Please fill out the field.", Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+                        signal = 2;
                         break;
                     case 4:
                         period = editTextPeriod.getText().toString().trim();
@@ -176,21 +191,26 @@ public class ReportFragment extends TablePageFragment {
                         signal = 1;
                         break;
                     case 5:
-                        //desc pic only period
+                        period = editTextPeriod2.getText().toString().trim();
+                        if (period.isEmpty()) {
+                            Toast.makeText(getContext(), "Please fill out the field.", Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+                        signal = 2;
                         break;
                     case 6:
                         signal = 1;
                         break;
                     case 7:
-                        //desc pic only all
+                        signal = 2;
                         break;
 
                 }
-                if (signal == 1) {
-                    reportResultFragment = ReportResultFragment.newInstance(lot, name, category, period);
+                if (signal != 0) {
+                    reportResultFragment = ReportResultFragment.newInstance(lot, name, category, period, signal);
                     loadFragment(reportResultFragment);
-                } else if (signal == 2) {
-                    //run desc and pic only
+                } else {
+                    Toast.makeText(getContext(), "Error.", Toast.LENGTH_SHORT).show();
                 }
                 break;
             }

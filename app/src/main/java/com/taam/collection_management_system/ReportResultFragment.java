@@ -29,14 +29,21 @@ public class ReportResultFragment extends ReportFragment {
     private DatabaseReference itemsRef;
     private TextView searchResultTextView;
 
-    public static ReportResultFragment newInstance(String lotNumber, String name, String category, String period) {
+    public static ReportResultFragment newInstance(String lotNumber, String name, String category, String period, int signal) {
         ReportResultFragment fragment = new ReportResultFragment();
         Bundle args = new Bundle();
         args.putString(ARG_LOT_NUMBER, lotNumber);
         args.putString(ARG_NAME, name);
         args.putString(ARG_CATEGORY, category);
         args.putString(ARG_PERIOD, period);
+        args.putInt(ARG_SIGNAL, signal);
         fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static ReportResultFragment newInstance() {
+        ReportResultFragment fragment = new ReportResultFragment();
+        fragment.setArguments(null);
         return fragment;
     }
 
@@ -54,7 +61,13 @@ public class ReportResultFragment extends ReportFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_report_result, container, false);
+        View view;
+        int signal = getArguments().getInt(ARG_SIGNAL);
+        if (signal == 1) {
+            view = inflater.inflate(R.layout.fragment_report_result, container, false);
+        } else {
+            view = inflater.inflate(R.layout.report_desc_img_only, container, false);
+        }
 
         searchResultTextView = view.findViewById(R.id.searchResultTextView);
         Button buttonBack = view.findViewById(R.id.buttonBack);
@@ -67,7 +80,7 @@ public class ReportResultFragment extends ReportFragment {
         });
 
         recyclerView = view.findViewById(R.id.recyclerView);
-        fillRecycler(recyclerView);
+        fillRecycler(recyclerView, signal);
 
         return view;
     }

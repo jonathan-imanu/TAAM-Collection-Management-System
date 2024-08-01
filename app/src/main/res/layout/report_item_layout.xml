@@ -30,6 +30,16 @@
         android:text="Name" />
 
     <TextView
+        android:id="@+id/textViewPeriod"
+        android:layout_width="125sp"
+        android:layout_height="match_parent"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:lines="2"
+        android:padding="4dp"
+        android:text="Category" />
+
+    <TextView
         android:id="@+id/textViewCategory"
         android:layout_width="125sp"
         android:layout_height="match_parent"
@@ -39,15 +49,6 @@
         android:padding="4dp"
         android:text="Period" />
 
-    <TextView
-        android:id="@+id/textViewPeriod"
-        android:layout_width="125sp"
-        android:layout_height="match_parent"
-        android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:lines="2"
-        android:padding="4dp"
-        android:text="Category" />
 
     <TextView
         android:id="@+id/textViewDescription"
@@ -62,6 +63,6 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="169dp"
+        android:layout_height="75sp"
         app:layout_constraintStart_toStartOf="parent" />
 </LinearLayout>
