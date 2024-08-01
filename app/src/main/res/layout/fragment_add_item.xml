@@ -6,38 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".AddItemFragment">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        app:titleTextColor="?attr/colorSurface"
-        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/process"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView" />
 
     <EditText
         android:id="@+id/editTextName"
-        android:layout_width="597dp"
+        android:layout_width="match_parent"
         android:layout_height="69dp"
         android:hint="Name"
+        android:background="@drawable/custom_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView1" />
+        app:layout_constraintTop_toBottomOf="@id/textView1"
+        android:paddingLeft="16dp"/>
 
     <EditText
         android:id="@+id/editTextLot"
-        android:layout_width="448dp"
-        android:layout_height="53dp"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
         android:layout_marginTop="4dp"
         android:hint="Lot#"
+        android:paddingLeft="16dp"
+        android:background="@drawable/custom_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,10 +42,12 @@
 
     <EditText
         android:id="@+id/editTextDescription"
-        android:layout_width="446dp"
+        android:layout_width="match_parent"
         android:layout_height="105dp"
         android:layout_marginTop="4dp"
         android:hint="Description"
+        android:paddingLeft="16dp"
+        android:background="@drawable/custom_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +59,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:entries="@array/categories_array"
+        android:background="@drawable/custom_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,12 +72,13 @@
         android:text="@string/add_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/process" />
+        app:layout_constraintTop_toBottomOf="@+id/selectVideo" />
 
     <Spinner
         android:id="@+id/spinnerPeriod"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_edittext"
         android:entries="@array/period_array"
         app:layout_constraintTop_toBottomOf="@+id/textPer"
         tools:layout_editor_absoluteX="0dp" />
@@ -87,7 +88,7 @@
         android:layout_width="448dp"
         android:layout_height="227dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectVideo" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdd" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/selectVideo"
@@ -107,6 +108,8 @@
         android:ems="10"
         android:inputType="text"
         android:text="Choose Period Below"
+        android:textColor="@color/purple"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinnerCategory" />
 
@@ -117,18 +120,24 @@
         android:ems="10"
         android:inputType="text"
         android:text="Choose Category Below"
+        android:textColor="@color/purple"
+        android:textStyle="bold"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextDescription" />
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="448dp"
-        android:layout_height="42dp"
-        android:textSize="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:text="To add a new record, please fill out all fields below!"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/purple"
+        android:textStyle="bold"
+        android:textAlignment="center"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
