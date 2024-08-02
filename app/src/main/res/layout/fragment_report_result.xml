@@ -110,18 +110,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
             <Button
-                android:id="@+id/buttonView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/purple"
-                android:layout_marginRight="10dp"
-                android:text="View"/>
-            <Button
                 android:id="@+id/buttonBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/purple"
                 android:text="Back"/>
+            <Button
+                android:id="@+id/buttonPrintPDF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple"
+                android:layout_marginRight="10dp"
+                android:text="Print PDF"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
