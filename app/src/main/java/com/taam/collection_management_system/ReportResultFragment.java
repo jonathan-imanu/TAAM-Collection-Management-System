@@ -125,8 +125,8 @@ public class ReportResultFragment extends ReportFragment {
         buttonBack.setVisibility(View.GONE);
         buttonPrintPDF.setVisibility(View.GONE);
 
-        view.measure(View.MeasureSpec.makeMeasureSpec(displayMetrics.widthPixels, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(displayMetrics.heightPixels, View.MeasureSpec.EXACTLY));
+        view.measure(View.MeasureSpec.makeMeasureSpec(recyclerView.getWidth(), View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(300 + recyclerView.computeVerticalScrollRange(), View.MeasureSpec.EXACTLY));
         view.layout(0, 0, displayMetrics.widthPixels, displayMetrics.heightPixels);
 
         PdfDocument document = new PdfDocument();
@@ -179,8 +179,8 @@ public class ReportResultFragment extends ReportFragment {
         buttonBack.setVisibility(View.GONE);
         buttonPrintPDF.setVisibility(View.GONE);
 
-        view.measure(View.MeasureSpec.makeMeasureSpec(displayMetrics.widthPixels, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(displayMetrics.heightPixels, View.MeasureSpec.EXACTLY));
+        view.measure(View.MeasureSpec.makeMeasureSpec(recyclerView.getWidth(), View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(300 + recyclerView.computeVerticalScrollRange(), View.MeasureSpec.EXACTLY));
         view.layout(0, 0, displayMetrics.widthPixels, displayMetrics.heightPixels);
 
         PdfDocument document = new PdfDocument();
