@@ -21,18 +21,6 @@
             android:orientation="vertical"
             android:background="@color/purple">
 
-            <TextView
-                android:id="@+id/searchResultTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Result based on Lot#__  Category__  Period__  Keyword__"
-                android:textStyle="bold"
-                android:padding="8dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="4dp"
-                android:maxLines="2"
-                android:ellipsize="end" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
