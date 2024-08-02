@@ -150,7 +150,7 @@ public class ReportResultFragment extends ReportFragment {
             document.writeTo(fos);
             document.close();
             fos.close();
-            Toast.makeText(getContext(), "Written Successfully!!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Successfully downloaded PDF", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             Log.d("myLog", "Error while writing " + e.toString());
             throw new RuntimeException(e);
@@ -204,7 +204,7 @@ public class ReportResultFragment extends ReportFragment {
             document.writeTo(fos);
             document.close();
             fos.close();
-            Toast.makeText(getContext(), "Written Successfully!!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Successfully downloaded PDF", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             Log.d("myLog", "Error while writing " + e.toString());
             throw new RuntimeException(e);
