@@ -139,5 +139,54 @@
         android:textStyle="bold"
         android:textAlignment="center"/>
 
+    <TextView
+        android:id="@+id/textAddCatPer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="Want to add a new Category or Period? Input them below!"
+        android:textColor="@color/purple"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/process"
+        />
+
+    <EditText
+        android:id="@+id/editNewCat"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginTop="4dp"
+        android:hint="New Category"
+        android:paddingLeft="16dp"
+        android:background="@drawable/custom_edittext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textAddCatPer" />
+
+    <EditText
+        android:id="@+id/editNewPer"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginTop="4dp"
+        android:hint="New Period"
+        android:paddingLeft="16dp"
+        android:background="@drawable/custom_edittext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNewCat" />
+
+    <Button
+        android:id="@+id/buttonAddCatPer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add New Category/Period"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNewPer" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

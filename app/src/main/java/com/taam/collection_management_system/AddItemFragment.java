@@ -46,10 +46,10 @@ import java.util.UUID;
 
 
 public class AddItemFragment extends Fragment {
-    private EditText editTextName, editTextLot, editTextDescription;
+    private EditText editTextName, editTextLot, editTextDescription, editNewCat, editNewPer;
     private Spinner spinnerCategory;
     private Spinner spinnerPeriod;
-    private Button buttonAdd;
+    private Button buttonAdd, buttonAddCatPer;
 
     private FirebaseDatabase db;
 
@@ -75,6 +75,9 @@ public class AddItemFragment extends Fragment {
         imageView = view.findViewById(R.id.imageView);
         progressIndicator = view.findViewById(R.id.process);
         selectVideo = view.findViewById(R.id.selectVideo);
+        editNewCat = view.findViewById(R.id.editNewCat);
+        editNewPer = view.findViewById(R.id.editNewPer);
+        buttonAddCatPer = view.findViewById(R.id.buttonAddCatPer);
 
         db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
 
@@ -133,6 +136,14 @@ public class AddItemFragment extends Fragment {
                 activityResultLauncher.launch(intent);
             }
         });
+
+        buttonAddCatPer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addCatPer();
+            }
+        });
+
 
 
 
@@ -211,5 +222,18 @@ public class AddItemFragment extends Fragment {
                 Toast.makeText(getContext(), "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void addCatPer() {
+        String newCat = editNewCat.getText().toString().trim();
+        String newPer = editNewPer.getText().toString().trim();
+
+        if (newCat.isEmpty() && newPer.isEmpty()) {
+            Toast.makeText(getContext(),
+                    "Please input a Category or Period to add. It can be one, or both!",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
     }
 }
