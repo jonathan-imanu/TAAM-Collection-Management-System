@@ -19,7 +19,7 @@ import com.google.firebase.storage.StorageReference;
 
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportViewHolder> {
 
-    private List<Item> itemList;
+    protected List<Item> itemList;
     protected FirebaseDatabase db;
     protected DatabaseReference itemsRef;
 
