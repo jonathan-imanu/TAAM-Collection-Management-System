@@ -1,6 +1,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey">#808080</color>
     <!-- Application Theme Colors - View Importance in styles.xml   -->
     <color name="colorPrimary">#EE8B00</color>
     <color name="colorPrimaryDarker">#FC650D</color>
