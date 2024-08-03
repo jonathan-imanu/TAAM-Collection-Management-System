@@ -19,9 +19,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/table"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="vertical"
             android:padding="24dp">
 
@@ -69,13 +79,14 @@
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:hint="#0987"
+                        android:hint="Enter Lot Number"
                         android:background="@drawable/custom_edittext"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:paddingLeft="16dp" />
 
                     <CheckBox
+                        android:id="@+id/checkLot"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -107,13 +118,14 @@
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:hint="JiaQing lacquerware"
+                        android:hint="Enter Name"
                         android:background="@drawable/custom_edittext"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:paddingLeft="16dp" />
 
                     <CheckBox
+                        android:id="@+id/checkName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -145,13 +157,14 @@
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:hint="Ancient Jade"
+                        android:hint="Enter Category"
                         android:background="@drawable/custom_edittext"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:paddingLeft="16dp" />
 
                     <CheckBox
+                        android:id="@+id/checkCat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -167,7 +180,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Text 4"
+                    android:text="Category: Desc. and Picture Only"
                     android:textSize="16sp"
                     android:textColor="@color/black" />
 
@@ -183,13 +196,14 @@
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:hint="Ask prof if needed"
+                        android:hint="Enter Category"
                         android:background="@drawable/custom_edittext"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:paddingLeft="16dp" />
 
                     <CheckBox
+                        android:id="@+id/checkCatDp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -221,13 +235,14 @@
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:hint="Late Bronze Age"
+                        android:hint="Enter Period"
                         android:background="@drawable/custom_edittext"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:paddingLeft="16dp" />
 
                     <CheckBox
+                        android:id="@+id/checkPeriod"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -243,7 +258,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Text 6"
+                    android:text="Period: Desc. and Picture Only"
                     android:textSize="16sp"
                     android:textColor="@color/black" />
 
@@ -259,13 +274,14 @@
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:hint="Ask Prof if needed"
+                        android:hint="Enter Period"
                         android:background="@drawable/custom_edittext"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:paddingLeft="16dp" />
 
                     <CheckBox
+                        android:id="@+id/checkPeriodDp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -279,17 +295,20 @@
                 android:gravity="center_horizontal">
 
                 <CheckBox
+                    android:id="@+id/checkAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="All Items" />
 
                 <CheckBox
+                    android:id="@+id/checkAllDp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="All Items desc and picture only" />
             </LinearLayout>
 
             <Button
+                android:id="@+id/buttonSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
@@ -299,6 +318,8 @@
                 android:textStyle="bold"
                 app:cornerRadius="20dp" />
         </LinearLayout>
+
+        </ScrollView>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
