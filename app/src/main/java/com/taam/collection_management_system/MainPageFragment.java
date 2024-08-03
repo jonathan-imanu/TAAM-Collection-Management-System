@@ -35,7 +35,7 @@ public class MainPageFragment extends TablePageFragment {
         });
         buttonAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { loadFragment(new AdminLoginFragment()); }
+            public void onClick(View v) { loadFragment(new AdminLoginView()); }
         });
 
         fillRecycler(view.findViewById(R.id.recyclerView));
