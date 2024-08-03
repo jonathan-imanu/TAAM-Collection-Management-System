@@ -21,14 +21,15 @@ public class ItemAdapter extends ReportAdapter {
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
-        return new ItemViewHolder(view);
+        ItemViewHolder holder = new ItemViewHolder(view);
+        checkBoxList.add(holder.selectCheckBox);
+        return holder;
     }
 
 
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         //changed to adjust to new fields
         super.onBindViewHolder(holder, position);
-        checkBoxList.add(holder.selectCheckBox);
     }
 
     @Override
