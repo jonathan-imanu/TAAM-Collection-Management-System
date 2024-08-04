@@ -39,7 +39,6 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportView
         //changed to adjust to new fields
         FirebaseStorage storage = FirebaseStorage.getInstance("gs://taam-management-system.appspot.com/");
 
-
         Item item = itemList.get(position);
         holder.textViewLot.setText(item.getLot());
         holder.textViewName.setText(item.getName());

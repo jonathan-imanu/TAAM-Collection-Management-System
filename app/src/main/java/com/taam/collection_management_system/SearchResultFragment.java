@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -60,8 +61,20 @@ public class SearchResultFragment extends TablePageFragment {
         View view = inflater.inflate(R.layout.fragment_search_result, container, false);
 
         searchResultTextView = view.findViewById(R.id.searchResultTextView);
+        Button buttonView = view.findViewById(R.id.buttonView);
         Button buttonBack = view.findViewById(R.id.buttonBack);
 
+        buttonView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<String> lotList = getSelectedLot();
+                if (lotList.isEmpty()) {
+                    Toast.makeText(getContext(), "You must select an item.", Toast.LENGTH_SHORT).show();
+                } else {
+                    loadFragment(ViewPageFragment.newInstance(getSelectedLot()));
+                }
+            }
+        });
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
