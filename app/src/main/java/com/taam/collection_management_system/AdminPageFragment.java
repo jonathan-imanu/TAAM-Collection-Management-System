@@ -85,7 +85,7 @@ public class AdminPageFragment extends TablePageFragment {
             @Override
             public void onClick(View v) {
                 selected = getSelectedLot();
-                if (selected.size() == 0) {
+                if (selected.isEmpty()) {
                     Toast.makeText(getContext(), "You must select an item.", Toast.LENGTH_SHORT).show();
                 } else {
                     dialog.show();

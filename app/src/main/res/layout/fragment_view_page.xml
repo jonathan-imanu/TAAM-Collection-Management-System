@@ -23,12 +23,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:paddingTop="12dp"
+            android:paddingBottom="24dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingHorizontal="24dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -39,18 +41,19 @@
                     android:textSize="16sp" />
 
                 <Spinner
-                    android:id="@+id/itemSpinner"
+                    android:id="@+id/spinnerItem"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" of "
+                    android:text="of "
                     android:textColor="@color/purple"
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/textViewItemCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="#"
@@ -63,13 +66,14 @@
                     android:layout_weight="1" />
 
                 <ImageButton
-                    android:id="@+id/exitButton"
+                    android:id="@+id/buttonClose"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     android:padding="0dp"
                     android:backgroundTintMode="screen"
-                    android:src="@drawable/view_screen_exit" />
+                    android:contentDescription="close button"
+                    android:src="@drawable/view_screen_close" />
 
             </LinearLayout>
 
@@ -81,14 +85,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingHorizontal="24dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingTop="8dp"
                         android:paddingBottom="8dp">
 
                         <TextView
@@ -113,8 +116,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp">
+                        android:paddingVertical="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -138,8 +140,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp">
+                        android:paddingVertical="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -163,9 +164,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp">
-
+                        android:paddingVertical="8dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -188,8 +187,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp">
+                        android:paddingVertical="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -214,8 +212,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp">
+                        android:paddingVertical="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -234,8 +231,8 @@
 
                         <VideoView
                             android:id="@+id/videoView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_width="0dp"
+                            android:layout_height="0dp" />
 
                     </LinearLayout>
 

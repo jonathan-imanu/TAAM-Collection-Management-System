@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,11 +15,15 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +49,8 @@ abstract public class TablePageFragment extends Fragment {
     abstract public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
 
     protected void fetchItemsFromDatabase() {
+        db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
+        DatabaseReference myRef = db.getReference();
         itemsRef = db.getReference("collection_data/");
         itemsRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -79,8 +86,6 @@ abstract public class TablePageFragment extends Fragment {
         itemAdapter = new ItemAdapter(itemList, checkBoxList);
         recyclerView.setAdapter(itemAdapter);
 
-        db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
-        DatabaseReference myRef = db.getReference();
         fetchItemsFromDatabase();
     }
 
@@ -91,8 +96,8 @@ abstract public class TablePageFragment extends Fragment {
         transaction.commit();
     }
 
-    protected List<String> getSelectedLot() {
-        List<String> selectedLot = new ArrayList<String>();
+    protected ArrayList<String> getSelectedLot() {
+        ArrayList<String> selectedLot = new ArrayList<>();
         for (int i = 0; i < itemList.size(); i++) {
             if (checkBoxList.get(i).isChecked()) {
                 selectedLot.add(itemList.get(i).getLot());
