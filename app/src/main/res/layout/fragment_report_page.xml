@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:text="Report"
                 android:textAlignment="center"
-                android:textColor="@color/purple"
+                android:textColor="?android:colorPrimary"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -50,7 +50,7 @@
                 android:textSize="16sp"
                 android:paddingTop="8dp"
                 android:paddingBottom="0dp"
-                android:textColor="@color/purple" />
+                android:textColor="?android:colorPrimary" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -311,7 +311,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="@color/purple"
                 android:text="Submit"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -319,6 +318,6 @@
         </LinearLayout>
 
         </ScrollView>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

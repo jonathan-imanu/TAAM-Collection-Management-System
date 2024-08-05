@@ -3,12 +3,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#808080</color>
     <!-- Application Theme Colors - View Importance in styles.xml   -->
-    <color name="colorPrimary">#EE8B00</color>
-    <color name="colorPrimaryDarker">#FC650D</color>
-    <color name="colorAccent">#03A1DA</color>
+    <color name="colorPrimary">#8692f7</color>
+    <color name="colorPrimaryDarker">#8692f7</color>
+    <color name="colorAccent">#8692f7</color>
     <!-- For Admin Login Page -->
     <color name="purple">#8692f7</color>
     <color name="gridLayout">#000000</color>
-    <!-- For Table -->
-    <color name="cell">#FFFFFFFF</color>
 </resources>

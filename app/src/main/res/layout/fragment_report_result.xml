@@ -19,13 +19,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/purple">
+            android:background="?android:colorPrimary">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="2dp"
-                android:background="@color/cell"
+                android:background="?colorSurface"
                 android:paddingHorizontal="4dp">
 
                 <TextView
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:elevation="10dp"
-        android:background="@color/white"
+        android:background="?colorSurface"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
@@ -101,13 +101,11 @@
                 android:id="@+id/buttonBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/purple"
                 android:text="Back"/>
             <Button
                 android:id="@+id/buttonPrintPDF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/purple"
                 android:layout_marginRight="10dp"
                 android:text="Print PDF"/>
         </LinearLayout>

@@ -108,7 +108,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="Choose Period Below"
-        android:textColor="@color/purple"
+        android:textColor="?android:colorPrimary"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinnerCategory" />
@@ -120,7 +120,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="Choose Category Below"
-        android:textColor="@color/purple"
+        android:textColor="?android:colorPrimary"
         android:textStyle="bold"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +135,7 @@
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/purple"
+        android:textColor="?android:colorPrimary"
         android:textStyle="bold"
         android:textAlignment="center"/>
 
@@ -145,7 +145,7 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:text="Want to add a new Category or Period? Input them below!"
-        android:textColor="@color/purple"
+        android:textColor="?android:colorPrimary"
         android:textStyle="bold"
         android:textAlignment="center"
         android:gravity="center_horizontal"
