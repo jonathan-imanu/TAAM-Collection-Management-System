@@ -19,7 +19,7 @@ import com.google.firebase.storage.StorageReference;
 
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportViewHolder> {
 
-    private List<Item> itemList;
+    protected List<Item> itemList;
     protected FirebaseDatabase db;
     protected DatabaseReference itemsRef;
 
@@ -38,7 +38,6 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportView
     public void onBindViewHolder(@NonNull ReportViewHolder holder, int position) {
         //changed to adjust to new fields
         FirebaseStorage storage = FirebaseStorage.getInstance("gs://taam-management-system.appspot.com/");
-
 
         Item item = itemList.get(position);
         holder.textViewLot.setText(item.getLot());

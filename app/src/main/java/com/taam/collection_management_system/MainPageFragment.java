@@ -5,9 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 
 public class MainPageFragment extends TablePageFragment {
 
@@ -24,14 +27,17 @@ public class MainPageFragment extends TablePageFragment {
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragment(new MainPageFragment());
+                ArrayList<String> lotList = getSelectedLot();
+                if (lotList.isEmpty()) {
+                    Toast.makeText(getContext(), "You must select an item.", Toast.LENGTH_SHORT).show();
+                } else {
+                    loadFragment(ViewPageFragment.newInstance(getSelectedLot()));
+                }
             }
         });
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                loadFragment(new SearchFragment());
-            }
+            public void onClick(View v) { loadFragment(new SearchFragment()); }
         });
         buttonAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,5 +48,5 @@ public class MainPageFragment extends TablePageFragment {
 
         return view;
     }
-    
+
 }

@@ -23,6 +23,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnFailureListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminPageFragment extends TablePageFragment {
@@ -62,9 +63,15 @@ public class AdminPageFragment extends TablePageFragment {
 
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { loadFragment(new MainPageFragment()); }
+            public void onClick(View v) {
+                ArrayList<String> lotList = getSelectedLot();
+                if (lotList.isEmpty()) {
+                    Toast.makeText(getContext(), "You must select an item.", Toast.LENGTH_SHORT).show();
+                } else {
+                    loadFragment(ViewPageFragment.newInstance(getSelectedLot()));
+                }
+            }
         });
-
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { loadFragment(new SearchFragment()); }
@@ -85,7 +92,7 @@ public class AdminPageFragment extends TablePageFragment {
             @Override
             public void onClick(View v) {
                 selected = getSelectedLot();
-                if (selected.size() == 0) {
+                if (selected.isEmpty()) {
                     Toast.makeText(getContext(), "You must select an item.", Toast.LENGTH_SHORT).show();
                 } else {
                     dialog.show();

@@ -46,19 +46,21 @@ import java.util.UUID;
 
 
 public class AddItemFragment extends Fragment {
-    private EditText editTextName, editTextLot, editTextDescription;
+    private EditText editTextName, editTextLot, editTextDescription, editNewCat, editNewPer;
     private Spinner spinnerCategory;
     private Spinner spinnerPeriod;
-    private Button buttonAdd;
+    protected ArrayAdapter<String> sC;
+    protected ArrayAdapter<String> sP;
 
-    private FirebaseDatabase db;
-
-    private Button btnSelect;
+    private Button buttonAdd, buttonAddCatPer;
     private ImageView imageView;
     private Uri video;
-    private StorageReference storageReference;
     private LinearProgressIndicator progressIndicator;
-    private MaterialButton selectVideo, uploadVideo;
+    private MaterialButton selectVideo;
+
+    private DatabaseReference catReference, perReference;
+    private FirebaseDatabase db;
+    private StorageReference storageReference;
 
 
     @Nullable
@@ -75,39 +77,56 @@ public class AddItemFragment extends Fragment {
         imageView = view.findViewById(R.id.imageView);
         progressIndicator = view.findViewById(R.id.process);
         selectVideo = view.findViewById(R.id.selectVideo);
+        editNewCat = view.findViewById(R.id.editNewCat);
+        editNewPer = view.findViewById(R.id.editNewPer);
+        buttonAddCatPer = view.findViewById(R.id.buttonAddCatPer);
 
         db = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
-
+        catReference = db.getReference("categories/");
+        perReference = db.getReference("periods/");
         FirebaseApp.initializeApp(requireContext());
         storageReference = FirebaseStorage.getInstance().getReference();
 
+
+        sC = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item);
+        sP = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item);
+        spinnerCategory.setAdapter(sC);
+        spinnerPeriod.setAdapter(sP);
+
         AppCompatActivity activity = (AppCompatActivity) getActivity();
 
-        // Set up the spinner with categories
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.categories_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCategory.setAdapter(adapter);
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
+
+        catReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                addItem();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                sC.clear();
+                for (DataSnapshot snapshot1: snapshot.getChildren()) {
+                    String category = snapshot1.child("category").getValue(String.class);
+                    sC.add(category);
+                }
+                sC.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                    //error
             }
         });
 
-        // Set up the spinner with periods
-        ArrayAdapter<CharSequence> adapter_p = ArrayAdapter.createFromResource(getContext(),
-                R.array.period_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerPeriod.setAdapter(adapter_p);
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
+        perReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                addItem();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                sP.clear();
+                for (DataSnapshot snapshot1: snapshot.getChildren()) {
+                    String period = snapshot1.child("period").getValue(String.class);
+                    sP.add(period);
+                }
+                sP.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //error
             }
         });
-
-        //set up Image Select
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -125,6 +144,7 @@ public class AddItemFragment extends Fragment {
                     }
                 });
 
+
         selectVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,6 +155,20 @@ public class AddItemFragment extends Fragment {
         });
 
 
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addItem();
+            }
+        });
+
+
+        buttonAddCatPer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addCatPer();
+            }
+        });
 
         return view;
     }
@@ -166,8 +200,8 @@ public class AddItemFragment extends Fragment {
 
         myRef.orderByChild("lot").equalTo(lot).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
                     Toast.makeText(getContext(), "Lot number already exists.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -208,8 +242,72 @@ public class AddItemFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                //error
             }
         });
+    }
+
+    private void addCatPer() {
+        String newCat = editNewCat.getText().toString().trim().toLowerCase();
+        String newPer = editNewPer.getText().toString().trim().toLowerCase();
+
+        if (newCat.isEmpty() && newPer.isEmpty()) {
+            Toast.makeText(getContext(),
+                    "Please input a Category or Period to add. It can be one, or both!",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!newCat.isEmpty()) {
+            catReference.orderByChild("category").equalTo(newCat).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        Toast.makeText(getContext(), "Category already exists.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    DatabaseReference catRef = catReference.push();
+                    catRef.child("category").setValue(newCat).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getContext(), "Category added", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), "Failed to add category", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+
+        if (!newPer.isEmpty()) {
+            perReference.orderByChild("period").equalTo(newPer).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        Toast.makeText(getContext(), "Period already exists.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    DatabaseReference perRef = perReference.push();
+                    perRef.child("period").setValue(newPer).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getContext(), "Period added", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), "Failed to add period", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    //error
+                }
+            });
+        }
+
     }
 }
