@@ -83,7 +83,6 @@ public class ViewPageFragment extends Fragment {
         textViewDescription = view.findViewById(R.id.textViewDescription);
 
         imageView = view.findViewById(R.id.imageView);
-        videoView = view.findViewById(R.id.videoView);
 
         ImageButton buttonClose = view.findViewById(R.id.buttonClose);
 
