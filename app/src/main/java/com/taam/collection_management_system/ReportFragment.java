@@ -26,6 +26,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ReportFragment extends TablePageFragment {
+    private EditText etLotNumber, etName, etKeyword;
+    private Spinner spinnerCategory, spinnerCategory2, spinnerPeriod, spinnerPeriod2;
+    private ArrayAdapter<String> categoryAdapter, categoryAdapter2, periodAdapter, periodAdapter2;
+    private List<String> categoryList, categoryList2, periodList, periodList2;
 
     private FirebaseDatabase db;
     private DatabaseReference itemsRef;
@@ -39,6 +43,8 @@ public class ReportFragment extends TablePageFragment {
     protected ReportAdapter reportAdapter;
     protected ReportDescAdapter reportDescAdapter;
     private ReportResultFragment reportResultFragment;
+
+    private DatabaseReference catReference, perReference;
 
     @Nullable
     @Override
@@ -57,6 +63,10 @@ public class ReportFragment extends TablePageFragment {
         checkBoxList.add(view.findViewById(R.id.checkPeriodDp));
         checkBoxList.add(view.findViewById(R.id.checkAll));
         checkBoxList.add(view.findViewById(R.id.checkAllDp));
+        spinnerCategory = view.findViewById(R.id.spinnerCategory);
+        spinnerCategory2 = view.findViewById(R.id.spinnerCategory2);
+        spinnerPeriod = view.findViewById(R.id.spinnerPeriod);
+        spinnerPeriod2 = view.findViewById(R.id.spinnerPeriod2);
 
         //initialize text editors
         editTextLotNumber = view.findViewById(R.id.editTextLotNumber);
@@ -71,7 +81,38 @@ public class ReportFragment extends TablePageFragment {
         period = editTextPeriod.getText().toString().trim();
         period2 = editTextPeriod2.getText().toString().trim();
 
+        categoryList = new ArrayList<>();
+        categoryList2 = new ArrayList<>();
+        periodList = new ArrayList<>();
+        periodList2 = new ArrayList<>();
 
+        // Add an empty item for default value
+        categoryList.add("");
+        categoryList2.add("");
+        periodList.add("");
+        periodList2.add("");
+
+        categoryAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, categoryList);
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categoryAdapter2 = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, categoryList2);
+        categoryAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        periodAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, periodList);
+        periodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        periodAdapter2 = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, periodList2);
+        periodAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerCategory.setAdapter(categoryAdapter);
+        spinnerCategory2.setAdapter(categoryAdapter2);
+        spinnerPeriod.setAdapter(periodAdapter);
+        spinnerPeriod2.setAdapter(periodAdapter2);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://taam-management-system-default-rtdb.firebaseio.com/");
+        catReference = database.getReference("categories/");
+        perReference = database.getReference("periods/");
+
+        loadCategories();
+        loadPeriods();
 
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,6 +186,60 @@ public class ReportFragment extends TablePageFragment {
         return counter;
     }
 
+    private void loadCategories() {
+        catReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                categoryList.clear();
+                categoryList2.clear();
+                // Add an empty item for default value
+                categoryList.add("");
+                categoryList2.add("");
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String category = ds.child("category").getValue(String.class);
+                    if (category != null) {
+                        categoryList.add(category);
+                        categoryList2.add(category);
+                    }
+                }
+                categoryAdapter.notifyDataSetChanged();
+                categoryAdapter2.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), "Failed to load categories", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void loadPeriods() {
+        perReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                periodList.clear();
+                periodList2.clear();
+                // Add an empty item for default value
+                periodList.add("");
+                periodList2.add("");
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String period = ds.child("period").getValue(String.class);
+                    if (period != null) {
+                        periodList.add(period);
+                        periodList2.add(period);
+                    }
+                }
+                periodAdapter.notifyDataSetChanged();
+                periodAdapter2.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), "Failed to load periods", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void generateReport() {
         int signal = 0;
         for (int i = 0; i < checkBoxList.size(); i++) {
@@ -167,33 +262,33 @@ public class ReportFragment extends TablePageFragment {
                         signal = 1;
                         break;
                     case 2:
-                        category = editTextCategory.getText().toString().trim();
+                        category = spinnerCategory.getSelectedItem().toString().trim();
                         if (category.isEmpty()) {
-                            Toast.makeText(getContext(), "Please fill out the field.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Please select a category.", Toast.LENGTH_SHORT).show();
                             break;
                         }
                         signal = 1;
                         break;
                     case 3:
-                        category = editTextCategory2.getText().toString().trim();
+                        category = spinnerCategory2.getSelectedItem().toString().trim();
                         if (category.isEmpty()) {
-                            Toast.makeText(getContext(), "Please fill out the field.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Please select a category.", Toast.LENGTH_SHORT).show();
                             break;
                         }
                         signal = 2;
                         break;
                     case 4:
-                        period = editTextPeriod.getText().toString().trim();
+                        period = spinnerPeriod.getSelectedItem().toString().trim();
                         if (period.isEmpty()) {
-                            Toast.makeText(getContext(), "Please fill out the field.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Please select a period.", Toast.LENGTH_SHORT).show();
                             break;
                         }
                         signal = 1;
                         break;
                     case 5:
-                        period = editTextPeriod2.getText().toString().trim();
+                        period = spinnerPeriod2.getSelectedItem().toString().trim();
                         if (period.isEmpty()) {
-                            Toast.makeText(getContext(), "Please fill out the field.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Please select a period.", Toast.LENGTH_SHORT).show();
                             break;
                         }
                         signal = 2;
@@ -204,7 +299,6 @@ public class ReportFragment extends TablePageFragment {
                     case 7:
                         signal = 2;
                         break;
-
                 }
                 if (signal != 0) {
                     reportResultFragment = ReportResultFragment.newInstance(lot, name, category, period, signal);
@@ -216,4 +310,5 @@ public class ReportFragment extends TablePageFragment {
             }
         }
     }
+
 }
