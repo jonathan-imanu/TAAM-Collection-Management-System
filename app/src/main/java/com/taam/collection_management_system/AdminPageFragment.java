@@ -55,6 +55,7 @@ public class AdminPageFragment extends TablePageFragment {
         dialog.setContentView(R.layout.fragment_delete_item);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setCancelable(false);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
         selectedLots = dialog.findViewById(R.id.selectedLots);
 
@@ -98,8 +99,9 @@ public class AdminPageFragment extends TablePageFragment {
                     dialog.show();
                     StringBuilder selectedItems = new StringBuilder("Lot# of records selected:\n");
                     for (String item : selected) {
-                        selectedItems.append(item).append("\n");
+                        selectedItems.append(item).append(", ");
                     }
+                    selectedItems.setLength(selectedItems.length() - 2);
                     selectedLots.setText(selectedItems.toString());
                 }
             }

@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:text="Adminstrator Access"
                 android:textAlignment="center"
-                android:textColor="?android:colorPrimary"
+                android:textColor="?colorPrimary"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
