@@ -133,6 +133,7 @@
                                 android:id="@+id/checkName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
+
                         </LinearLayout>
                     </LinearLayout>
 
@@ -161,17 +162,25 @@
                             <EditText
                                 android:id="@+id/editTextCategory"
                                 android:layout_width="0dp"
-                                android:layout_height="40dp"
-                                android:layout_weight="1"
+                                android:layout_height="0dp"
+                                android:layout_weight="0"
                                 android:hint="Enter Category"
                                 android:background="@drawable/custom_edittext"
                                 android:textColor="@color/black"
                                 android:textSize="14sp"
                                 android:paddingLeft="16dp" />
 
+                            <Spinner
+                                android:id="@+id/spinnerCategory"
+                                android:layout_width="305dp"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/custom_edittext" />
+
                             <CheckBox
                                 android:id="@+id/checkCat"
-                                android:layout_width="wrap_content"
+                                android:layout_width="29dp"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
@@ -201,17 +210,25 @@
                             <EditText
                                 android:id="@+id/editTextCategory2"
                                 android:layout_width="0dp"
-                                android:layout_height="40dp"
-                                android:layout_weight="1"
+                                android:layout_height="0dp"
+                                android:layout_weight="0"
                                 android:hint="Enter Category"
                                 android:background="@drawable/custom_edittext"
                                 android:textColor="@color/black"
                                 android:textSize="14sp"
                                 android:paddingLeft="16dp" />
 
+                            <Spinner
+                                android:id="@+id/spinnerCategory2"
+                                android:layout_width="305dp"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/custom_edittext" />
+
                             <CheckBox
                                 android:id="@+id/checkCatDp"
-                                android:layout_width="wrap_content"
+                                android:layout_width="29dp"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
@@ -241,17 +258,25 @@
                             <EditText
                                 android:id="@+id/editTextPeriod"
                                 android:layout_width="0dp"
-                                android:layout_height="40dp"
-                                android:layout_weight="1"
-                                android:hint="Enter Period"
+                                android:layout_height="0dp"
+                                android:layout_weight="0"
+                                android:hint="Enter Category"
                                 android:background="@drawable/custom_edittext"
                                 android:textColor="@color/black"
                                 android:textSize="14sp"
                                 android:paddingLeft="16dp" />
 
+                            <Spinner
+                                android:id="@+id/spinnerPeriod"
+                                android:layout_width="305dp"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/custom_edittext" />
+
                             <CheckBox
                                 android:id="@+id/checkPeriod"
-                                android:layout_width="wrap_content"
+                                android:layout_width="29dp"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
@@ -281,17 +306,25 @@
                             <EditText
                                 android:id="@+id/editTextPeriod2"
                                 android:layout_width="0dp"
-                                android:layout_height="40dp"
-                                android:layout_weight="1"
-                                android:hint="Enter Period"
+                                android:layout_height="0dp"
+                                android:layout_weight="0"
+                                android:hint="Enter Category"
                                 android:background="@drawable/custom_edittext"
                                 android:textColor="@color/black"
                                 android:textSize="14sp"
                                 android:paddingLeft="16dp" />
 
+                            <Spinner
+                                android:id="@+id/spinnerPeriod2"
+                                android:layout_width="305dp"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/custom_edittext" />
+
                             <CheckBox
                                 android:id="@+id/checkPeriodDp"
-                                android:layout_width="wrap_content"
+                                android:layout_width="29dp"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
