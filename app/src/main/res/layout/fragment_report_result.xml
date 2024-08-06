@@ -47,14 +47,14 @@
                     android:layout_width="125sp"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:text="Period" />
+                    android:text="Category" />
 
                 <TextView
                     android:id="@+id/textViewPeriod"
                     android:layout_width="125sp"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:text="Category" />
+                    android:text="Period" />
 
                 <TextView
                     android:id="@+id/textViewDescription"

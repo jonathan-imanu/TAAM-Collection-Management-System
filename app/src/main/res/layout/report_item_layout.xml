@@ -26,7 +26,7 @@
         android:text="Name" />
 
     <TextView
-        android:id="@+id/textViewPeriod"
+        android:id="@+id/textViewCategory"
         android:layout_width="125sp"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
@@ -34,7 +34,7 @@
         android:text="Category" />
 
     <TextView
-        android:id="@+id/textViewCategory"
+        android:id="@+id/textViewPeriod"
         android:layout_width="125sp"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
