@@ -3,10 +3,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#808080</color>
     <!-- Application Theme Colors - View Importance in styles.xml   -->
-    <color name="colorPrimary">#8692f7</color>
-    <color name="colorPrimaryDarker">#8692f7</color>
-    <color name="colorAccent">#8692f7</color>
-    <!-- For Admin Login Page -->
-    <color name="purple">#8692f7</color>
-    <color name="gridLayout">#000000</color>
+    <color name="colorPrimary">#A27F02</color>
+    <color name="colorPrimaryDarker">#644F05</color>
+    <color name="colorAccent">#A27F02</color>
 </resources>
