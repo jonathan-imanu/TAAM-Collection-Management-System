@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,8 +62,8 @@ public class SearchResultFragment extends TablePageFragment {
         View view = inflater.inflate(R.layout.fragment_search_result, container, false);
 
         searchResultTextView = view.findViewById(R.id.searchResultTextView);
-        Button buttonView = view.findViewById(R.id.buttonView);
-        Button buttonBack = view.findViewById(R.id.buttonBack);
+        ImageButton buttonView = view.findViewById(R.id.buttonView);
+        ImageButton buttonBack = view.findViewById(R.id.buttonBack);
 
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +79,7 @@ public class SearchResultFragment extends TablePageFragment {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadFragment(new SearchFragment());
+                getActivity().onBackPressed();
             }
         });
 

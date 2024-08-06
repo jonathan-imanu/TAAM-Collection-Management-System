@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,13 +79,13 @@ public class ReportResultFragment extends ReportFragment {
         }
 
         searchResultTextView = view.findViewById(R.id.searchResultTextView);
-        Button buttonBack = view.findViewById(R.id.buttonBack);
-        Button buttonPrintPDF = view.findViewById(R.id.buttonPrintPDF);
+        ImageButton buttonBack = view.findViewById(R.id.buttonBack);
+        ImageButton buttonPrintPDF = view.findViewById(R.id.buttonPrintPDF);
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadFragment(new ReportFragment());
+                getActivity().onBackPressed();
             }
         });
 
@@ -120,8 +121,8 @@ public class ReportResultFragment extends ReportFragment {
         }
 
         // Hide the buttons before capturing the view
-        Button buttonBack = view.findViewById(R.id.buttonBack);
-        Button buttonPrintPDF = view.findViewById(R.id.buttonPrintPDF);
+        ImageButton buttonBack = view.findViewById(R.id.buttonBack);
+        ImageButton buttonPrintPDF = view.findViewById(R.id.buttonPrintPDF);
         buttonBack.setVisibility(View.GONE);
         buttonPrintPDF.setVisibility(View.GONE);
 
@@ -174,8 +175,8 @@ public class ReportResultFragment extends ReportFragment {
         }
 
         // Hide the buttons before capturing the view
-        Button buttonBack = view.findViewById(R.id.buttonBack);
-        Button buttonPrintPDF = view.findViewById(R.id.buttonPrintPDF);
+        ImageButton buttonBack = view.findViewById(R.id.buttonBack);
+        ImageButton buttonPrintPDF = view.findViewById(R.id.buttonPrintPDF);
         buttonBack.setVisibility(View.GONE);
         buttonPrintPDF.setVisibility(View.GONE);
 
