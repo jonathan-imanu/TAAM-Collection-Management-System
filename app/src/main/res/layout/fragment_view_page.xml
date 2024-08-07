@@ -9,9 +9,10 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="30dp"
+        app:layout_constrainedHeight="true"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,7 +108,7 @@
                             android:background="@drawable/custom_edittext"
                             android:paddingHorizontal="16dp"
                             android:paddingVertical="12dp"
-                            android:textSize="14sp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -129,7 +130,7 @@
                             android:background="@drawable/custom_edittext"
                             android:paddingHorizontal="16dp"
                             android:paddingVertical="12dp"
-                            android:textSize="14sp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -151,7 +152,7 @@
                             android:background="@drawable/custom_edittext"
                             android:paddingHorizontal="16dp"
                             android:paddingVertical="12dp"
-                            android:textSize="14sp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -172,7 +173,7 @@
                             android:background="@drawable/custom_edittext"
                             android:paddingHorizontal="16dp"
                             android:paddingVertical="12dp"
-                            android:textSize="14sp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -194,7 +195,7 @@
                             android:background="@drawable/custom_edittext"
                             android:paddingHorizontal="16dp"
                             android:paddingVertical="12dp"
-                            android:textSize="14sp" />
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
