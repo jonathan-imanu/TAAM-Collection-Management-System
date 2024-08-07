@@ -37,10 +37,10 @@
 
                 <TextView
                     android:id="@+id/textViewImage"
-                    android:layout_width="200sp"
+                    android:layout_width="100sp"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:text="Image/Video Thumbnail" />
+                    android:text="Image/Video" />
 
             </LinearLayout>
 

@@ -1,192 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddItemFragment">
+    tools:context=".MainActivity">
 
-
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/process"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
-
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="match_parent"
-        android:layout_height="69dp"
-        android:hint="Name"
-        android:background="@drawable/custom_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView1"
-        android:paddingLeft="16dp"/>
-
-    <EditText
-        android:id="@+id/editTextLot"
-        android:layout_width="match_parent"
-        android:layout_height="69dp"
-        android:layout_marginTop="4dp"
-        android:hint="Lot#"
-        android:paddingLeft="16dp"
-        android:background="@drawable/custom_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
-
-    <EditText
-        android:id="@+id/editTextDescription"
-        android:layout_width="match_parent"
-        android:layout_height="105dp"
-        android:layout_marginTop="4dp"
-        android:hint="Description"
-        android:paddingLeft="16dp"
-        android:background="@drawable/custom_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLot" />
-
-
-    <Spinner
-        android:id="@+id/spinnerCategory"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:entries="@array/categories_array"
-        android:background="@drawable/custom_edittext"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCat" />
-
-    <Button
-        android:id="@+id/buttonAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_item"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectVideo" />
-
-    <Spinner
-        android:id="@+id/spinnerPeriod"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_edittext"
-        android:entries="@array/period_array"
-        app:layout_constraintTop_toBottomOf="@+id/textPer"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="448dp"
-        android:layout_height="227dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAdd" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/selectVideo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
-        android:text="Select Image/Video"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinnerPeriod" />
-
-    <TextView
-        android:id="@+id/textPer"
-        android:layout_width="186dp"
-        android:layout_height="26dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Choose Period Below"
-        android:textColor="?android:colorPrimary"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinnerCategory" />
-
-    <TextView
-        android:id="@+id/textCat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Choose Category Below"
-        android:textColor="?android:colorPrimary"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextDescription" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:text="To add a new record, please fill out all fields below!"
-        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="?android:colorPrimary"
-        android:textStyle="bold"
-        android:textAlignment="center"/>
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <TextView
-        android:id="@+id/textAddCatPer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:text="Want to add a new Category or Period? Input them below!"
-        android:textColor="?android:colorPrimary"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:gravity="center_horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/process"
-        />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-    <EditText
-        android:id="@+id/editNewCat"
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_marginTop="4dp"
-        android:hint="New Category"
-        android:paddingLeft="16dp"
-        android:background="@drawable/custom_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAddCatPer" />
+            <LinearLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="24dp"
+                android:paddingHorizontal="8dp"
+                android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editNewPer"
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_marginTop="4dp"
-        android:hint="New Period"
-        android:paddingLeft="16dp"
-        android:background="@drawable/custom_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNewCat" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="16dp">
 
-    <Button
-        android:id="@+id/buttonAddCatPer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add New Category/Period"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNewPer" />
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Add New Record"
+                        android:textSize="24sp"
+                        android:textColor="?android:colorPrimary"
+                        android:textStyle="bold"
+                        android:textAlignment="center"/>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingVertical="8dp">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lot Number:"
+                            android:textSize="16sp"/>
+
+                        <EditText
+                            android:id="@+id/editTextLot"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Lot Number"
+                            android:background="@drawable/custom_edittext"
+                            android:inputType="number"
+                            android:textSize="16sp"
+                            android:paddingVertical="12dp"
+                            android:paddingHorizontal="16dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingVertical="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Name:"
+                            android:textSize="16sp"/>
+
+                        <EditText
+                            android:id="@+id/editTextName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Name"
+                            android:background="@drawable/custom_edittext"
+                            android:inputType="text"
+                            android:textSize="16sp"
+                            android:paddingVertical="12dp"
+                            android:paddingHorizontal="16dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingVertical="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Description:"
+                            android:textSize="16sp"/>
+
+                        <EditText
+                            android:id="@+id/editTextDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Description"
+                            android:background="@drawable/custom_edittext"
+                            android:minLines="5"
+                            android:textSize="16sp"
+                            android:paddingVertical="12dp"
+                            android:paddingHorizontal="16dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingVertical="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Category:"
+                            android:textSize="16sp"/>
+
+                        <Spinner
+                            android:id="@+id/spinnerCategory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/custom_edittext"
+                            android:paddingHorizontal="16dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingVertical="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Period:"
+                            android:textSize="16sp"/>
+
+                        <Spinner
+                            android:id="@+id/spinnerPeriod"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/custom_edittext"
+                            android:paddingHorizontal="16dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="8dp">
+
+                        <Button
+                            android:id="@+id/selectVideo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginRight="10dp"
+                            android:text="Select File" />
+
+                        <Button
+                            android:id="@+id/buttonAdd"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/add_item" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"/>
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/process"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageView"
+                        android:paddingBottom="10dp" />
+
+                    <TextView
+                        android:id="@+id/textAddCatPer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Add New Category/Period"
+                        android:textSize="24sp"
+                        android:textColor="?android:colorPrimary"
+                        android:textStyle="bold"
+                        android:textAlignment="center"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingVertical="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Category:"
+                            android:textSize="16sp"/>
+
+                        <EditText
+                            android:id="@+id/editNewCat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Category"
+                            android:background="@drawable/custom_edittext"
+                            android:inputType="text"
+                            android:textSize="16sp"
+                            android:paddingVertical="12dp"
+                            android:paddingHorizontal="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingVertical="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Period:"
+                            android:textSize="16sp"/>
+
+                        <EditText
+                            android:id="@+id/editNewPer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Period"
+                            android:background="@drawable/custom_edittext"
+                            android:inputType="text"
+                            android:textSize="16sp"
+                            android:paddingVertical="12dp"
+                            android:paddingHorizontal="16dp" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/buttonAddCatPer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/add_item" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
