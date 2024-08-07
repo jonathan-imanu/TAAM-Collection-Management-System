@@ -51,42 +51,36 @@ public class ReportFragment extends TablePageFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_report_page, container, false);
 
+        buttonSubmit = view.findViewById(R.id.buttonSubmit);
 
         //initialize checkboxes
-        buttonSubmit = view.findViewById(R.id.buttonSubmit);
         checkBoxList = new ArrayList<>();
         checkBoxList.add(view.findViewById(R.id.checkLot));
         checkBoxList.add(view.findViewById(R.id.checkName));
         checkBoxList.add(view.findViewById(R.id.checkCat));
-        checkBoxList.add(view.findViewById(R.id.checkCatDp));
+        checkBoxList.add(view.findViewById(R.id.checkCatDP));
         checkBoxList.add(view.findViewById(R.id.checkPeriod));
-        checkBoxList.add(view.findViewById(R.id.checkPeriodDp));
+        checkBoxList.add(view.findViewById(R.id.checkPeriodDP));
         checkBoxList.add(view.findViewById(R.id.checkAll));
         checkBoxList.add(view.findViewById(R.id.checkAllDp));
+
+        //initialize text editors
+        editTextLotNumber = view.findViewById(R.id.editTextLotNumber);
+        editTextName = view.findViewById(R.id.editTextName);
+        lot = "";
+        name = "";
+
+        //initialize spinners
         spinnerCategory = view.findViewById(R.id.spinnerCategory);
         spinnerCategory2 = view.findViewById(R.id.spinnerCategory2);
         spinnerPeriod = view.findViewById(R.id.spinnerPeriod);
         spinnerPeriod2 = view.findViewById(R.id.spinnerPeriod2);
 
-        //initialize text editors
-        editTextLotNumber = view.findViewById(R.id.editTextLotNumber);
-        editTextName = view.findViewById(R.id.editTextName);
-        editTextCategory = view.findViewById(R.id.editTextCategory);
-        editTextCategory2 = view.findViewById(R.id.editTextCategory2);
-        editTextPeriod = view.findViewById(R.id.editTextPeriod);
-        editTextPeriod2 = view.findViewById(R.id.editTextPeriod2);
-        name = editTextName.getText().toString().trim();
-        category = editTextCategory.getText().toString().trim();
-        category2 = editTextCategory2.getText().toString().trim();
-        period = editTextPeriod.getText().toString().trim();
-        period2 = editTextPeriod2.getText().toString().trim();
-
+        //initialize spinners choice list
         categoryList = new ArrayList<>();
         categoryList2 = new ArrayList<>();
         periodList = new ArrayList<>();
         periodList2 = new ArrayList<>();
-
-        // Add an empty item for default value
         categoryList.add("");
         categoryList2.add("");
         periodList.add("");
