@@ -12,7 +12,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        app:layout_constrainedHeight="true"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,18 +50,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Lot Number:"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp"
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/etLotNumber"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_marginTop="8dp"
                         android:hint="Enter Lot Number"
                         android:background="@drawable/custom_edittext"
-                        android:textSize="16sp"
-                        android:paddingVertical="12dp"
-                        android:paddingHorizontal="16dp"/>
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:padding="8dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -76,18 +76,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Name:"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp"
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/etName"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_marginTop="8dp"
                         android:hint="Enter Name"
                         android:background="@drawable/custom_edittext"
-                        android:textSize="16sp"
-                        android:paddingVertical="12dp"
-                        android:paddingHorizontal="16dp"/>
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:padding="8dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -101,16 +102,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Category:"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textColor="@color/black" />
 
                     <Spinner
                         android:id="@+id/spinnerCategory"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/custom_edittext"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="12dp"/>
+                        android:background="@drawable/custom_edittext" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -124,16 +124,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Period:"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp"
+                        android:textColor="@color/black" />
 
                     <Spinner
                         android:id="@+id/spinnerPeriod"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/custom_edittext"
-                        android:paddingVertical="12dp"
-                        android:paddingHorizontal="16dp"/>
+                        android:background="@drawable/custom_edittext" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -147,18 +146,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Keyword:"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp"
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/etKeyword"
                         android:layout_width="match_parent"
+                        android:inputType="text"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:hint="Enter Keyword"
                         android:background="@drawable/custom_edittext"
-                        android:textSize="16sp"
-                        android:paddingVertical="12dp"
-                        android:paddingHorizontal="16dp" />
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:padding="8dp" />
                 </LinearLayout>
 
                 <Button
